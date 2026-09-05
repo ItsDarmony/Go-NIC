@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Nic - Mi Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <style>
+        .profile-main-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .profile-card {
+            background: var(--card-bg, #0d231c);
+            border: 1px solid var(--border-color, rgba(145, 213, 221, 0.25));
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            color: var(--text-color, #E8F1EE);
+        }
+        .profile-header-flex {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            border-bottom: 1px solid var(--border-color, rgba(145, 213, 221, 0.25));
+            padding-bottom: 25px;
+        }
+        .profile-avatar-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #DAE799;
+            color: #0D3C30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .profile-user-info h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.8rem;
+            color: #E8F1EE;
+        }
+        .profile-user-info p {
+            margin: 0;
+            color: #DAE799;
+            font-size: 1rem;
+        }
+        .profile-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .profile-field-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .profile-field-box span.label {
+            font-size: 0.85rem;
+            color: rgba(232, 241, 238, 0.7);
+            font-weight: 500;
+        }
+        .profile-field-box span.value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #E8F1EE;
+        }
+        .profile-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            border-top: 1px solid var(--border-color, rgba(145, 213, 221, 0.25));
+            padding-top: 25px;
+        }
+        .btn-logout {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn-logout:hover {
+            opacity: 0.9;
+        }
+        .page-translate-wrapper {
+            opacity: 1;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .page-translate-wrapper.fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="login-body">
+
+    <div id="pageContent" class="page-translate-wrapper">
+        <header class="smooth-entry delay-1">
+            <div class="nav-container">
+                <a href="../HTML/index.html" class="logo">GO<span>NIC</span></a>
+                <ul class="nav-links">
+                    <li><a href="../HTML/index.html" data-i18n="nav_discover">Descubrir</a></li>
+                    <li><a href="../HTML/hoteles.html" data-i18n="nav_hotels">Hoteles</a></li>
+                    <li><a href="../HTML/foros.html" data-i18n="nav_foros">Foros</a></li>
+                    <li><a href="../HTML/contacto.html" data-i18n="nav_contact">Contacto</a></li>
+                    <li>
+                        <button type="button" id="theme-toggle" class="nav-theme-btn" aria-label="Cambiar tema">
+                            <span id="theme-icon" style="display: flex; align-items: center;">
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                            </span>
+                            <span id="theme-text">Oscuro</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" id="lang-toggle" class="nav-theme-btn" aria-label="Cambiar idioma">
+                            <span id="lang-text">EN</span>
+                        </button>
+                    </li>
+                    <li><a href="../HTML/perfil.html" class="btn-signin" data-i18n="nav_profile">Perfil</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="profile-main-container smooth-entry delay-2">
+            <div class="profile-card">
+                <div class="profile-header-flex">
+                    <div class="profile-avatar-placeholder" id="user-initial">U</div>
+                    <div class="profile-user-info">
+                        <h2 id="user-fullname">Turista Go Nic</h2>
+                        <p id="user-email">usuario@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="profile-details-grid">
+                    <div class="profile-field-box">
+                        <span class="label">Estado de la cuenta</span>
+                        <span class="value" style="color: #DAE799;">Activo y Verificado</span>
+                    </div>
+                    <div class="profile-field-box">
+                        <span class="label">Membresía</span>
+                        <span class="value">Viajero Go Nic</span>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button type="button" class="btn-logout" id="btnLogout">Cerrar sesión</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLogged = localStorage.getItem('gonic-logged') === 'true';
+            if (!isLogged) {
+                window.location.href = '../HTML/login.html';
+                return;
+            }
+
+            const storedName = localStorage.getItem('gonic-username');
+            const storedEmail = localStorage.getItem('gonic-email');
+
+            if (storedName) {
+                document.getElementById('user-fullname').textContent = storedName;
+                document.getElementById('user-initial').textContent = storedName.charAt(0).toUpperCase();
+            }
+            if (storedEmail) {
+                document.getElementById('user-email').textContent = storedEmail;
+            }
+        });
+
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+
+        const moonSVG = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+        const sunSVG = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('gonic-theme', theme);
+            if (theme === 'dark') {
+                themeIcon.innerHTML = sunSVG;
+                themeText.textContent = 'Claro';
+            } else {
+                themeIcon.innerHTML = moonSVG;
+                themeText.textContent = 'Oscuro';
+            }
+        }
+
+        const savedTheme = localStorage.getItem('gonic-theme') || 'light';
+        applyTheme(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langText = document.getElementById('lang-text');
+        const pageContent = document.getElementById('pageContent');
+
+        const translations = {
+            es: { nav_discover: "Descubrir", nav_hotels: "Hoteles", nav_foros: "Foros", nav_contact: "Contacto", nav_profile: "Perfil" },
+            en: { nav_discover: "Discover", nav_hotels: "Hotels", nav_foros: "Forums", nav_contact: "Contact", nav_profile: "Profile" }
+        };
+
+        function setLanguage(lang) {
+            pageContent.classList.add('fade-out');
+            setTimeout(() => {
+                document.documentElement.setAttribute('lang', lang);
+                localStorage.setItem('gonic-lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+                if (langText) langText.textContent = lang === 'es' ? 'EN' : 'ES';
+                pageContent.classList.remove('fade-out');
+            }, 300);
+        }
+
+        const savedLang = localStorage.getItem('gonic-lang') || 'es';
+        setLanguage(savedLang);
+
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                const currentLang = document.documentElement.getAttribute('lang') || 'es';
+                setLanguage(currentLang === 'es' ? 'en' : 'es');
+            });
+        }
+
+        document.getElementById('btnLogout').addEventListener('click', () => {
+            localStorage.removeItem('gonic-logged');
+            localStorage.removeItem('gonic-username');
+            localStorage.removeItem('gonic-email');
+            window.location.href = '../HTML/login.html';
+        });
+    </script>
+</body>
+</html>

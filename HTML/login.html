@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Nic - Autenticación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/login.css">
+    <style>
+        .lang-float-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: rgba(13, 35, 28, 0.8);
+            border: 1px solid rgba(145, 213, 221, 0.25);
+            color: #E8F1EE;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .lang-float-btn:hover {
+            background: #DAE799;
+            color: #0D3C30;
+            border-color: #DAE799;
+        }
+        .page-translate-wrapper {
+            opacity: 1;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+            height: 100%;
+        }
+        .page-translate-wrapper.fade-out {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body class="login-body">
+
+    <button type="button" id="lang-toggle" class="lang-float-btn" aria-label="Cambiar idioma">
+        <span id="lang-text">EN</span>
+    </button>
+
+    <div id="pageContent" class="page-translate-wrapper">
+        <div class="split-screen">
+            <main class="panel-form">
+                <div class="form-header smooth-entry delay-1"></div>
+
+                <div class="form-container">
+                    <div class="brand-badge smooth-entry delay-2">
+                        <img src="../ASSETS/pajarito.png" alt="Go Nic Logo" class="brand-logo-img">
+                    </div>
+
+                    <div class="auth-slider-wrapper">
+                        
+                        <div id="loginView" class="auth-view active">
+                            <h2 class="smooth-entry delay-3" data-i18n="login_title">Iniciar sesión en Go Nic</h2>
+
+                            <form id="loginForm">
+                                <div class="field-group smooth-entry delay-4">
+                                    <label for="login-email"><span data-i18n="label_email">Correo electrónico</span> <span class="asterisk">*</span></label>
+                                    <input type="email" id="login-email" name="email" placeholder="usuario@gmail.com" required autocomplete="email">
+                                </div>
+
+                                <div class="field-group smooth-entry delay-5">
+                                    <label for="login-password"><span data-i18n="label_pass">Contraseña</span> <span class="asterisk">*</span></label>
+                                    <div class="input-password-wrapper">
+                                        <input type="password" id="login-password" name="password" placeholder="••••••••••••" required>
+                                        <button type="button" class="btn-toggle-show" data-target="login-password" data-i18n="btn_show">MOSTRAR</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions smooth-entry delay-5">
+                                    <a href="#" class="link-subtle" data-i18n="link_forgot">¿Olvidaste tu contraseña?</a>
+                                </div>
+
+                                <button type="submit" class="btn-login-pill smooth-entry delay-6" data-i18n="btn_login">Iniciar sesión</button>
+
+                                <div class="switch-prompt smooth-entry delay-6">
+                                    <p><span data-i18n="no_account">¿No tienes una cuenta?</span> <a href="#" id="goToRegister" class="link-highlight" data-i18n="link_register">Regístrate</a></p>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="registerView" class="auth-view next">
+                            <h2 class="smooth-entry delay-3" data-i18n="reg_title">Crear cuenta en Go Nic</h2>
+
+                            <form id="registerForm">
+                                <div class="field-group smooth-entry delay-4">
+                                    <label for="reg-name"><span data-i18n="label_fullname">Nombre completo</span> <span class="asterisk">*</span></label>
+                                    <input type="text" id="reg-name" name="nombre" placeholder="Tu nombre" required>
+                                </div>
+
+                                <div class="field-group smooth-entry delay-4">
+                                    <label for="reg-apellido"><span>Apellido</span> <span class="asterisk">*</span></label>
+                                    <input type="text" id="reg-apellido" name="apellido" placeholder="Tu apellido" required>
+                                </div>
+
+                                <div class="field-group smooth-entry delay-4">
+                                    <label for="reg-email"><span data-i18n="label_email">Correo electrónico</span> <span class="asterisk">*</span></label>
+                                    <input type="email" id="reg-email" name="email" placeholder="usuario@gmail.com" required autocomplete="email">
+                                </div>
+
+                                <div class="field-group smooth-entry delay-5">
+                                    <label for="reg-password"><span data-i18n="label_pass">Contraseña</span> <span class="asterisk">*</span></label>
+                                    <div class="input-password-wrapper">
+                                        <input type="password" id="reg-password" name="password" placeholder="••••••••••••" required>
+                                        <button type="button" class="btn-toggle-show" data-target="reg-password" data-i18n="btn_show">MOSTRAR</button>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-login-pill smooth-entry delay-6" data-i18n="btn_register">Registrarse</button>
+
+                                <div class="switch-prompt smooth-entry delay-6">
+                                    <p><span data-i18n="has_account">¿Ya tienes una cuenta?</span> <a href="#" id="goToLogin" class="link-highlight" data-i18n="link_login">Inicia sesión</a></p>
+                                </div>
+                            </form>
+
+                            <div id="verifBox" style="display: none; margin-top: 20px; text-align: center;">
+                                <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">Verifica tu correo</h3>
+                                <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-bottom: 15px;">Ingresa el código de 6 dígitos enviado a tu correo.</p>
+                                <input type="text" id="codigoInput" placeholder="123456" maxlength="6" style="padding: 10px; width: 100%; margin-bottom: 15px; border-radius: 8px; border: 1.5px solid rgba(145, 213, 221, 0.25); background: #071612; color: #fff; text-align: center; font-size: 1.2rem; letter-spacing: 2px; outline: none;">
+                                <button type="button" id="btnVerificar" class="btn-login-pill">Verificar Código</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <footer class="form-footer smooth-entry delay-7">
+                    <a href="#" data-i18n="footer_help">Ayuda</a>
+                    <a href="#" data-i18n="footer_terms">Términos</a>
+                    <a href="#" data-i18n="footer_privacy">Privacidad</a>
+                    <a href="#" data-i18n="footer_cookies">Configuración de cookies</a>
+                </footer>
+            </main>
+
+            <aside class="panel-banner smooth-banner">
+                <div class="banner-content smooth-entry delay-3">
+                    <h1 class="banner-logo">GO <span>NIC</span></h1>
+                    <p class="banner-tagline" data-i18n="banner_tagline">Tierra de lagos y volcanes.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            es: {
+                login_title: "Iniciar sesión en Go Nic",
+                reg_title: "Crear cuenta en Go Nic",
+                label_email: "Correo electrónico",
+                label_pass: "Contraseña",
+                label_fullname: "Nombre completo",
+                btn_show: "MOSTRAR",
+                btn_hide: "OCULTAR",
+                link_forgot: "¿Olvidaste tu contraseña?",
+                btn_login: "Iniciar sesión",
+                btn_register: "Registrarse",
+                no_account: "¿No tienes una cuenta?",
+                has_account: "¿Ya tienes una cuenta?",
+                link_register: "Regístrate",
+                link_login: "Inicia sesión",
+                footer_help: "Ayuda",
+                footer_terms: "Términos",
+                footer_privacy: "Privacidad",
+                footer_cookies: "Configuración de cookies",
+                banner_tagline: "Tierra de lagos y volcanes."
+            },
+            en: {
+                login_title: "Sign in to Go Nic",
+                reg_title: "Create account in Go Nic",
+                label_email: "Email address",
+                label_pass: "Password",
+                label_fullname: "Full name",
+                btn_show: "SHOW",
+                btn_hide: "HIDE",
+                link_forgot: "Forgot your password?",
+                btn_login: "Sign in",
+                btn_register: "Register",
+                no_account: "Don't have an account?",
+                has_account: "Already have an account?",
+                link_register: "Sign up",
+                link_login: "Sign in",
+                footer_help: "Help",
+                footer_terms: "Terms",
+                footer_privacy: "Privacy",
+                footer_cookies: "Cookie settings",
+                banner_tagline: "Land of lakes and volcanoes."
+            }
+        };
+
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langText = document.getElementById('lang-text');
+        const pageContent = document.getElementById('pageContent');
+
+        function setLanguage(lang) {
+            pageContent.classList.add('fade-out');
+
+            setTimeout(() => {
+                document.documentElement.setAttribute('lang', lang);
+                localStorage.setItem('gonic-lang', lang);
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+
+                if (langText) {
+                    langText.textContent = lang === 'es' ? 'EN' : 'ES';
+                }
+
+                pageContent.classList.remove('fade-out');
+            }, 300);
+        }
+
+        const savedLang = localStorage.getItem('gonic-lang') || 'es';
+        setLanguage(savedLang);
+
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                const currentLang = document.documentElement.getAttribute('lang') || 'es';
+                setLanguage(currentLang === 'es' ? 'en' : 'es');
+            });
+        }
+
+        document.querySelectorAll('.btn-toggle-show').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const inputId = btn.getAttribute('data-target');
+                const passInput = document.getElementById(inputId);
+                const isPassword = passInput.type === 'password';
+                passInput.type = isPassword ? 'text' : 'password';
+                
+                const currentLang = document.documentElement.getAttribute('lang') || 'es';
+                if (isPassword) {
+                    btn.textContent = translations[currentLang].btn_hide;
+                } else {
+                    btn.textContent = translations[currentLang].btn_show;
+                }
+            });
+        });
+
+        const loginView = document.getElementById('loginView');
+        const registerView = document.getElementById('registerView');
+        const goToRegister = document.getElementById('goToRegister');
+        const goToLogin = document.getElementById('goToLogin');
+
+        goToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginView.classList.remove('active');
+            loginView.classList.add('exit-left');
+
+            registerView.classList.remove('next', 'exit-right');
+            registerView.classList.add('active');
+        });
+
+        goToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerView.classList.remove('active');
+            registerView.classList.add('exit-right');
+
+            loginView.classList.remove('exit-left');
+            loginView.classList.add('active');
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('../BACKEND/login_backend.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                
+                alert(result.message);
+                if (result.status === 'success') {
+                    localStorage.setItem('gonic-logged', 'true');
+                    localStorage.setItem('gonic-username', result.nombre);
+                    localStorage.setItem('gonic-email', result.email);
+                    window.location.href = '../HTML/index.html'; 
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ocurrió un error al intentar iniciar sesión.');
+            }
+        });
+
+        let correoPendiente = '';
+
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            correoPendiente = document.getElementById('reg-email').value;
+
+            try {
+                const response = await fetch('../BACKEND/registro_backend.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                
+                alert(result.message);
+                if (result.status === 'success') {
+                    document.getElementById('registerForm').querySelectorAll('.field-group, button').forEach(el => el.style.display = 'none');
+                    document.getElementById('verifBox').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ocurrió un error al conectar con el servidor.');
+            }
+        });
+
+        document.getElementById('btnVerificar').addEventListener('click', async () => {
+            const codigo = document.getElementById('codigoInput').value;
+            const formData = new FormData();
+            formData.append('email', correoPendiente);
+            formData.append('codigo', codigo);
+
+            try {
+                const response = await fetch('../BACKEND/verificar_codigo.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                
+                alert(result.message);
+                if (result.status === 'success') {
+                    window.location.reload();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ocurrió un error al verificar el código.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubrir Destinos - GO NIC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/descubrir.css">
+    <style>
+        .page-translate-wrapper {
+            opacity: 1;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .page-translate-wrapper.fade-out {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="pageContent" class="page-translate-wrapper">
+        <!-- Header Navigation -->
+        <header class="smooth-entry delay-1">
+            <div class="nav-container">
+                <a href="../index.html" class="logo">GO<span>NIC</span></a>
+                <ul class="nav-links">
+                    <li><a href="descubrir.html" class="active" data-i18n="nav_discover">Descubrir</a></li>
+                    <li><a href="../index.html" data-i18n="nav_hotels">Hoteles</a></li>
+                    <li><a href="#" data-i18n="nav_foros">Foros</a></li>
+                    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+                    <li>
+                        <button type="button" id="theme-toggle" class="nav-theme-btn" aria-label="Cambiar tema">
+                            <span id="theme-icon" style="display: flex; align-items: center;">
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                            </span>
+                            <span id="theme-text">Oscuro</span>
+                        </button>
+                    </li>
+                    <!-- Botón de Idioma -->
+                    <li>
+                        <button type="button" id="lang-toggle" class="nav-theme-btn" aria-label="Cambiar idioma">
+                            <span id="lang-text">EN</span>
+                        </button>
+                    </li>
+                    <li><a href="login.html" class="btn-signin" data-i18n="nav_signin">Iniciar sesión</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Hero Header -->
+        <section class="hero smooth-entry delay-2">
+            <div class="hero-badge" data-i18n="hero_badge">Guía Completa de Destinos</div>
+            <h1 data-i18n="hero_title">Descubre Nicaragua</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
+                Explora volcanes activos, playas de surf, reservas naturales y ciudades históricas con datos clave para tu viaje.
+            </p>
+        </section>
+
+        <!-- Filtros de Categoría -->
+        <div class="filter-container smooth-entry delay-3">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Todos los lugares</button>
+                <button class="filter-btn" data-filter="volcanes" data-i18n="filter_volcanoes">Volcanes y Aventura</button>
+                <button class="filter-btn" data-filter="reservas" data-i18n="filter_reserves">Reservas y Lagos</button>
+                <button class="filter-btn" data-filter="historicas" data-i18n="filter_history">Ciudades Históricas</button>
+                <button class="filter-btn" data-filter="playas" data-i18n="filter_beaches">Playas y Costa</button>
+            </div>
+        </div>
+
+        <!-- Lista de Tarjetas de Destinos -->
+        <main class="destinations-wrapper">
+
+            <!-- 1. Volcán Cerro Negro -->
+            <article class="destination-card smooth-entry delay-4" data-category="volcanes">
+                <div class="card-sidebar">
+                    <div class="sidebar-icon-box">
+                        <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+                    </div>
+                    <span class="sidebar-label" data-i18n="cat_volcanoes">Volcanes y Aventura</span>
+                </div>
+                <div class="card-main">
+                    <div class="destination-hero-img">
+                        <img src="../ASSETS/cerro-negro.jpg" alt="Volcán Cerro Negro">
+                    </div>
+                    <div class="card-header">
+                        <h2 class="destination-title" data-i18n="c1_title">Volcán Cerro Negro</h2>
+                        <span class="destination-location">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            León
+                        </span>
+                    </div>
+                    <p class="destination-description" data-i18n="c1_desc">
+                        El volcán más joven de Centroamérica. Su ladera de ceniza suelta es la pista perfecta para hacer Volcano Boarding a velocidades de hasta 60 km/h.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_climate">Clima</span><span class="info-val" data-i18n="c1_climate">Cálido y seco (30°C – 35°C)</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_access">Acceso</span><span class="info-val" data-i18n="c1_access">45 min en 4x4 desde León</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_cost">Costo</span><span class="info-val" data-i18n="c1_cost">Tours $25 – $35</span></div>
+                    </div>
+                    <div class="highlights-section">
+                        <h3 class="highlights-title" data-i18n="lbl_todo">Lo que debés hacer:</h3>
+                        <div class="activities-grid">
+                            <div class="activity-card">
+                                <img src="../ASSETS/sandboarding.jpg" alt="Sandboarding">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c1_act1_title">Sandboarding volcánico</h4>
+                                    <p data-i18n="c1_act1_desc">Descenso a alta velocidad en tabla por la ladera negra.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/trekking-crater.jpg" alt="Cráter activo">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c1_act2_title">Trekking al Cráter</h4>
+                                    <p data-i18n="c1_act2_desc">Caminata por la cumbre observando fumarolas de azufre.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 2. Isla de Ometepe -->
+            <article class="destination-card smooth-entry delay-5" data-category="reservas">
+                <div class="card-sidebar">
+                    <div class="sidebar-icon-box">
+                        <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 20s3-2 7-2 7 2 7 2 3-2 6-2"/><circle cx="12" cy="6" r="3"/></svg>
+                    </div>
+                    <span class="sidebar-label" data-i18n="cat_reserves">Reservas y Lagos</span>
+                </div>
+                <div class="card-main">
+                    <div class="destination-hero-img">
+                        <img src="../ASSETS/ometepe.jpg" alt="Isla de Ometepe">
+                    </div>
+                    <div class="card-header">
+                        <h2 class="destination-title" data-i18n="c2_title">Isla de Ometepe</h2>
+                        <span class="destination-location">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Rivas
+                        </span>
+                    </div>
+                    <p class="destination-description" data-i18n="c2_desc">
+                        Una isla formada por dos volcanes (Concepción y Maderas) en medio del Lago Cocibolca. Declarada Reserva de la Biosfera por la UNESCO.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_climate">Clima</span><span class="info-val" data-i18n="c2_climate">Tropical húmedo (26°C – 32°C)</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_access">Acceso</span><span class="info-val" data-i18n="c2_access">Ferry de 1h desde San Jorge</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_cost">Costo</span><span class="info-val" data-i18n="c2_cost">Ferry $2.50 pasaje</span></div>
+                    </div>
+                    <div class="highlights-section">
+                        <h3 class="highlights-title" data-i18n="lbl_todo">Lo que debés hacer:</h3>
+                        <div class="activities-grid">
+                            <div class="activity-card">
+                                <img src="../ASSETS/ojo-de-agua.jfif" alt="Ojo de Agua">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c2_act1_title">Manantial Ojo de Agua</h4>
+                                    <p data-i18n="c2_act1_desc">Aguas cristalinas de vertiente natural rodeadas de selva.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/cascada-san-ramon.jpg" alt="Cascada San Ramón">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c2_act2_title">Cascada San Ramón</h4>
+                                    <p data-i18n="c2_act2_desc">Senderismo en las faldas del volcán Maderas hasta la caída de agua.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/punta-jesus-maria.jfif" alt="Punta Jesus Maria">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c2_act3_title">Punta Jesús María</h4>
+                                    <p data-i18n="c2_act3_desc">Caminata sobre una lengua de arena única dentro del lago.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 3. Granada Colonial -->
+            <article class="destination-card smooth-entry delay-6" data-category="historicas">
+                <div class="card-sidebar">
+                    <div class="sidebar-icon-box">
+                        <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h2M13 10h2M9 14h2M13 14h2"/></svg>
+                    </div>
+                    <span class="sidebar-label" data-i18n="cat_history">Ciudades Históricas</span>
+                </div>
+                <div class="card-main">
+                    <div class="destination-hero-img">
+                        <img src="../ASSETS/granada.jpg" alt="Granada Colonial">
+                    </div>
+                    <div class="card-header">
+                        <h2 class="destination-title" data-i18n="c3_title">Granada Colonial</h2>
+                        <span class="destination-location">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Granada
+                        </span>
+                    </div>
+                    <p class="destination-description" data-i18n="c3_desc">
+                        Fundada en 1524, llena de casonas con patios internos, iglesias históricas y un ambiente colonial clásico a orillas del gran lago.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_climate">Clima</span><span class="info-val" data-i18n="c3_climate">Cálido tropical (28°C – 34°C)</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_access">Acceso</span><span class="info-val" data-i18n="c3_access">45 min desde Managua</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_cost">Costo</span><span class="info-val" data-i18n="c3_cost">Tours en lancha $20 - $30</span></div>
+                    </div>
+                    <div class="highlights-section">
+                        <h3 class="highlights-title" data-i18n="lbl_todo">Lo que debés hacer:</h3>
+                        <div class="activities-grid">
+                            <div class="activity-card">
+                                <img src="../ASSETS/torre-la-merced.jfif" alt="Iglesia La Merced">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c3_act1_title">Torre de La Merced</h4>
+                                    <p data-i18n="c3_act1_desc">Vista de 360 grados sobre los tejados rojos de la ciudad.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/isletas-granada.jpg" alt="Isletas de Granada">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c3_act2_title">Paseo por Isletas</h4>
+                                    <p data-i18n="c3_act2_desc">Recorrido en lancha por el archipiélago del lago Cocibolca.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/calzada-granada.jfif" alt="Calle La Calzada">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c3_act3_title">Calle La Calzada</h4>
+                                    <p data-i18n="c3_act3_desc">Caminata nocturna entre restaurantes, música y arquitectura.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 4. San Juan del Sur -->
+            <article class="destination-card" data-category="playas">
+                <div class="card-sidebar">
+                    <div class="sidebar-icon-box">
+                        <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 12h20M2 17h20M2 7h20"/></svg>
+                    </div>
+                    <span class="sidebar-label" data-i18n="cat_beaches">Playas y Costa</span>
+                </div>
+                <div class="card-main">
+                    <div class="destination-hero-img">
+                        <img src="../ASSETS/san-juan-del-sur.jpg" alt="San Juan del Sur">
+                    </div>
+                    <div class="card-header">
+                        <h2 class="destination-title" data-i18n="c4_title">San Juan del Sur</h2>
+                        <span class="destination-location">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Rivas
+                        </span>
+                    </div>
+                    <p class="destination-description" data-i18n="c4_desc">
+                        La meca del surf y la vida nocturna en la costa del Pacífico nicaragüense, rodeada de bahías y playas aptas para todos los niveles.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_climate">Clima</span><span class="info-val" data-i18n="c4_climate">Soleado (27°C – 33°C)</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_access">Acceso</span><span class="info-val" data-i18n="c4_access">2.5 horas desde Managua</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_cost">Costo</span><span class="info-val" data-i18n="c4_cost">Alquiler tabla $10/día</span></div>
+                    </div>
+                    <div class="highlights-section">
+                        <h3 class="highlights-title" data-i18n="lbl_todo">Lo que debés hacer:</h3>
+                        <div class="activities-grid">
+                            <div class="activity-card">
+                                <img src="../ASSETS/surf.jfif" alt="Surf San Juan">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c4_act1_title">Clases de Surf</h4>
+                                    <p data-i18n="c4_act1_desc">Sesiones en Playa Maderas con instructores locales.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/cristo-misericordia.jfif" alt="Cristo de la Misericordia">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c4_act2_title">Mirador del Cristo</h4>
+                                    <p data-i18n="c4_act2_desc">Panorámica completa de la bahía al atardecer.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/playa-maderas.jpg" alt="Playa Maderas">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c4_act3_title">Excursión a Playa Maderas</h4>
+                                    <p data-i18n="c4_act3_desc">Arena dorada y olas consistentes rodeadas de acantilados.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 5. Volcán Masaya -->
+            <article class="destination-card" data-category="volcanes">
+                <div class="card-sidebar">
+                    <div class="sidebar-icon-box">
+                        <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+                    </div>
+                    <span class="sidebar-label" data-i18n="cat_volcanoes">Volcanes y Aventura</span>
+                </div>
+                <div class="card-main">
+                    <div class="destination-hero-img">
+                        <img src="../ASSETS/volcan-masaya.jpg" alt="Volcán Masaya">
+                    </div>
+                    <div class="card-header">
+                        <h2 class="destination-title" data-i18n="c5_title">Volcán Masaya</h2>
+                        <span class="destination-location">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Masaya
+                        </span>
+                    </div>
+                    <p class="destination-description" data-i18n="c5_desc">
+                        Uno de los pocos lugares en el mundo donde puedes asomarte directamente al borde de un cráter activo con un lago de lava incandescente.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_climate">Clima</span><span class="info-val" data-i18n="c5_climate">Cálido y ventoso (27°C – 32°C)</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_access">Acceso</span><span class="info-val" data-i18n="c5_access">30 min desde Managua</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_cost">Costo</span><span class="info-val" data-i18n="c5_cost">Entrada $10 - $15</span></div>
+                    </div>
+                    <div class="highlights-section">
+                        <h3 class="highlights-title" data-i18n="lbl_todo">Lo que debés hacer:</h3>
+                        <div class="activities-grid">
+                            <div class="activity-card">
+                                <img src="../ASSETS/larga-nocturna.avif" alt="Lava nocturna">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c5_act1_title">Tour Nocturno de Lava</h4>
+                                    <p data-i18n="c5_act1_desc">Observación del brillo del magma rojo en la oscuridad total del cráter.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/museo-masaya.jpg" alt="Museo del Parque">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c5_act2_title">Centro de Visitantes</h4>
+                                    <p data-i18n="c5_act2_desc">Exhibición sobre la vulcanología, mitología y biodiversidad del parque.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 6. Corn Island -->
+            <article class="destination-card" data-category="playas">
+                <div class="card-sidebar">
+                    <div class="sidebar-icon-box">
+                        <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 12h20M2 17h20M2 7h20"/></svg>
+                    </div>
+                    <span class="sidebar-label" data-i18n="cat_beaches">Playas y Costa</span>
+                </div>
+                <div class="card-main">
+                    <div class="destination-hero-img">
+                        <img src="../ASSETS/corn-island.jpg" alt="Corn Island">
+                    </div>
+                    <div class="card-header">
+                        <h2 class="destination-title" data-i18n="c6_title">Corn Island</h2>
+                        <span class="destination-location">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Caribe Sur
+                        </span>
+                    </div>
+                    <p class="destination-description" data-i18n="c6_desc">
+                        Un paraíso caribeño de aguas turquesas, arrecifes de coral y cocoteros, ideal para desconectarse y disfrutar de la cultura afrocaribeña.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_climate">Clima</span><span class="info-val" data-i18n="c6_climate">Cálido tropical (29°C – 32°C)</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_access">Acceso</span><span class="info-val" data-i18n="c6_access">Vuelo corto desde Managua</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_cost">Costo</span><span class="info-val" data-i18n="c6_cost">Buceo $50 – $80</span></div>
+                    </div>
+                    <div class="highlights-section">
+                        <h3 class="highlights-title" data-i18n="lbl_todo">Lo que debés hacer:</h3>
+                        <div class="activities-grid">
+                            <div class="activity-card">
+                                <img src="../ASSETS/buceo-corn.jpg  " alt="Buceo en arrecifes">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c6_act1_title">Buceo y Snorkel</h4>
+                                    <p data-i18n="c6_act1_desc">Exploración de jardines de coral y vida marina multicolor.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/playa-south-end.jfif" alt="South End Beach">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c6_act2_title">Recorrido por South End</h4>
+                                    <p data-i18n="c6_act2_desc">Playas vírgenes de arena blanca rodeadas de palmeras solitarias.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 7. Cañón de Somoto -->
+            <article class="destination-card" data-category="reservas">
+                <div class="card-sidebar">
+                    <div class="sidebar-icon-box">
+                        <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 20s3-2 7-2 7 2 7 2 3-2 6-2"/><circle cx="12" cy="6" r="3"/></svg>
+                    </div>
+                    <span class="sidebar-label" data-i18n="cat_reserves">Reservas y Lagos</span>
+                </div>
+                <div class="card-main">
+                    <div class="destination-hero-img">
+                        <img src="../ASSETS/canon-somoto.jpg" alt="Cañón de Somoto">
+                    </div>
+                    <div class="card-header">
+                        <h2 class="destination-title" data-i18n="c7_title">Cañón de Somoto</h2>
+                        <span class="destination-location">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Madriz
+                        </span>
+                    </div>
+                    <p class="destination-description" data-i18n="c7_desc">
+                        Una de las formaciones rocosas más impactantes de Centroamérica, esculpida por el río Coco con paredes de roca de más de 100 metros de altura.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_climate">Clima</span><span class="info-val" data-i18n="c7_climate">Fresco a cálido (24°C – 30°C)</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_access">Acceso</span><span class="info-val" data-i18n="c7_access">3 horas desde Managua</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_cost">Costo</span><span class="info-val" data-i18n="c7_cost">Guía local y equipo $15 – $25</span></div>
+                    </div>
+                    <div class="highlights-section">
+                        <h3 class="highlights-title" data-i18n="lbl_todo">Lo que debés hacer:</h3>
+                        <div class="activities-grid">
+                            <div class="activity-card">
+                                <img src="../ASSETS/nado-canon.jpg" alt="Nado en cañón">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c7_act1_title">Nado y flotación en el río</h4>
+                                    <p data-i18n="c7_act1_desc">Recorrido guiado flotando entre las angostas paredes de piedra.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/saltos-agua.jfif" alt="Saltos de altura">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c7_act2_title">Saltos de acantilado</h4>
+                                    <p data-i18n="c7_act2_desc">Adrenalina pura saltando desde peñascos hacia pozas profundas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 8. León Histórico -->
+            <article class="destination-card" data-category="historicas">
+                <div class="card-sidebar">
+                    <div class="sidebar-icon-box">
+                        <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h2M13 10h2M9 14h2M13 14h2"/></svg>
+                    </div>
+                    <span class="sidebar-label" data-i18n="cat_history">Ciudades Históricas</span>
+                </div>
+                <div class="card-main">
+                    <div class="destination-hero-img">
+                        <img src="../ASSETS/leon-historico.jpg" alt="León Histórico">
+                    </div>
+                    <div class="card-header">
+                        <h2 class="destination-title" data-i18n="c8_title">León Metropolitano</h2>
+                        <span class="destination-location">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            León
+                        </span>
+                    </div>
+                    <p class="destination-description" data-i18n="c8_desc">
+                        Ciudad universitaria llena de murales revolucionarios, arte, museos literarios y la catedral más grande de Centroamérica.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_climate">Clima</span><span class="info-val" data-i18n="c8_climate">Cálido seco (32°C – 37°C)</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_access">Acceso</span><span class="info-val" data-i18n="c8_access">1.5 horas desde Managua</span></div>
+                        <div class="info-item"><span class="info-label" data-i18n="lbl_cost">Costo</span><span class="info-val" data-i18n="c8_cost">Entrada azotea catedral $5</span></div>
+                    </div>
+                    <div class="highlights-section">
+                        <h3 class="highlights-title" data-i18n="lbl_todo">Lo que debés hacer:</h3>
+                        <div class="activities-grid">
+                            <div class="activity-card">
+                                <img src="../ASSETS/catedral-leon.jpeg" alt="Techos de la Catedral">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c8_act1_title">Caminata en Cúpulas</h4>
+                                    <p data-i18n="c8_act1_desc">Paseo descalzo sobre los techos blancos de la Catedral con vistas al volcán.</p>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <img src="../ASSETS/museo-ruben-dario.jpg" alt="Museo Rubén Darío">
+                                <div class="activity-info">
+                                    <h4 data-i18n="c8_act2_title">Visita al Museo Rubén Darío</h4>
+                                    <p data-i18n="c8_act2_desc">Recorrido por la casa donde vivió el poeta universal de habla hispana.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <!-- Script de Traducción, Tema y Filtros -->
+    <script>
+        const translations = {
+            es: {
+                nav_discover: "Descubrir",
+                nav_hotels: "Hoteles",
+                nav_foros: "Foros",
+                nav_contact: "Contacto",
+                nav_signin: "Iniciar sesión",
+                hero_badge: "Guía Completa de Destinos",
+                hero_title: "Descubre Nicaragua",
+                hero_subtitle: "Explora volcanes activos, playas de surf, reservas naturales y ciudades históricas con datos clave para tu viaje.",
+                filter_all: "Todos los lugares",
+                filter_volcanoes: "Volcanes y Aventura",
+                filter_reserves: "Reservas y Lagos",
+                filter_history: "Ciudades Históricas",
+                filter_beaches: "Playas y Costa",
+                cat_volcanoes: "Volcanes y Aventura",
+                cat_reserves: "Reservas y Lagos",
+                cat_history: "Ciudades Históricas",
+                cat_beaches: "Playas y Costa",
+                lbl_climate: "Clima",
+                lbl_access: "Acceso",
+                lbl_cost: "Costo",
+                lbl_todo: "Lo que debés hacer:",
+                c1_title: "Volcán Cerro Negro",
+                c1_desc: "El volcán más joven de Centroamérica. Su ladera de ceniza suelta es la pista perfecta para hacer Volcano Boarding a velocidades de hasta 60 km/h.",
+                c1_climate: "Cálido y seco (30°C – 35°C)",
+                c1_access: "45 min en 4x4 desde León",
+                c1_cost: "Tours $25 – $35",
+                c1_act1_title: "Sandboarding volcánico",
+                c1_act1_desc: "Descenso a alta velocidad en tabla por la ladera negra.",
+                c1_act2_title: "Trekking al Cráter",
+                c1_act2_desc: "Caminata por la cumbre observando fumarolas de azufre.",
+                c2_title: "Isla de Ometepe",
+                c2_desc: "Una isla formada por dos volcanes (Concepción y Maderas) en medio del Lago Cocibolca. Declarada Reserva de la Biosfera por la UNESCO.",
+                c2_climate: "Tropical húmedo (26°C – 32°C)",
+                c2_access: "Ferry de 1h desde San Jorge",
+                c2_cost: "Ferry $2.50 pasaje",
+                c2_act1_title: "Manantial Ojo de Agua",
+                c2_act1_desc: "Aguas cristalinas de vertiente natural rodeadas de selva.",
+                c2_act2_title: "Cascada San Ramón",
+                c2_act2_desc: "Senderismo en las faldas del volcán Maderas hasta la caída de agua.",
+                c2_act3_title: "Punta Jesús María",
+                c2_act3_desc: "Caminata sobre una lengua de arena única dentro del lago.",
+                c3_title: "Granada Colonial",
+                c3_desc: "Fundada en 1524, llena de casonas con patios internos, iglesias históricas y un ambiente colonial clásico a orillas del gran lago.",
+                c3_climate: "Cálido tropical (28°C – 34°C)",
+                c3_access: "45 min desde Managua",
+                c3_cost: "Tours en lancha $20 - $30",
+                c3_act1_title: "Torre de La Merced",
+                c3_act1_desc: "Vista de 360 grados sobre los tejados rojos de la ciudad.",
+                c3_act2_title: "Paseo por Isletas",
+                c3_act2_desc: "Recorrido en lancha por el archipiélago del lago Cocibolca.",
+                c3_act3_title: "Calle La Calzada",
+                c3_act3_desc: "Caminata nocturna entre restaurantes, música y arquitectura.",
+                c4_title: "San Juan del Sur",
+                c4_desc: "La meca del surf y la vida nocturna en la costa del Pacífico nicaragüense, rodeada de bahías y playas aptas para todos los niveles.",
+                c4_climate: "Soleado (27°C – 33°C)",
+                c4_access: "2.5 horas desde Managua",
+                c4_cost: "Alquiler tabla $10/día",
+                c4_act1_title: "Clases de Surf",
+                c4_act1_desc: "Sesiones en Playa Maderas con instructores locales.",
+                c4_act2_title: "Mirador del Cristo",
+                c4_act2_desc: "Panorámica completa de la bahía al atardecer.",
+                c4_act3_title: "Excursión a Playa Maderas",
+                c4_act3_desc: "Arena dorada y olas consistentes rodeadas de acantilados.",
+                c5_title: "Volcán Masaya",
+                c5_desc: "Uno de los pocos lugares en el mundo donde puedes asomarte directamente al borde de un cráter activo con un lago de lava incandescente.",
+                c5_climate: "Cálido y ventoso (27°C – 32°C)",
+                c5_access: "30 min desde Managua",
+                c5_cost: "Entrada $10 - $15",
+                c5_act1_title: "Tour Nocturno de Lava",
+                c5_act1_desc: "Observación del brillo del magma rojo en la oscuridad total del cráter.",
+                c5_act2_title: "Centro de Visitantes",
+                c5_act2_desc: "Exhibición sobre la vulcanología, mitología y biodiversidad del parque.",
+                c6_title: "Corn Island",
+                c6_desc: "Un paraíso caribeño de aguas turquesas, arrecifes de coral y cocoteros, ideal para desconectarse y disfrutar de la cultura afrocaribeña.",
+                c6_climate: "Cálido tropical (29°C – 32°C)",
+                c6_access: "Vuelo corto desde Managua",
+                c6_cost: "Buceo $50 – $80",
+                c6_act1_title: "Buceo y Snorkel",
+                c6_act1_desc: "Exploración de jardines de coral y vida marina multicolor.",
+                c6_act2_title: "Recorrido por South End",
+                c6_act2_desc: "Playas vírgenes de arena blanca rodeadas de palmeras solitarias.",
+                c7_title: "Cañón de Somoto",
+                c7_desc: "Una de las formaciones rocosas más impactantes de Centroamérica, esculpida por el río Coco con paredes de roca de más de 100 metros de altura.",
+                c7_climate: "Fresco a cálido (24°C – 30°C)",
+                c7_access: "3 horas desde Managua",
+                c7_cost: "Guía local y equipo $15 – $25",
+                c7_act1_title: "Nado y flotación en el río",
+                c7_act1_desc: "Recorrido guiado flotando entre las angostas paredes de piedra.",
+                c7_act2_title: "Saltos de acantilado",
+                c7_act2_desc: "Adrenalina pura saltando desde peñascos hacia pozas profundas.",
+                c8_title: "León Metropolitano",
+                c8_desc: "Ciudad universitaria llena de murales revolucionarios, arte, museos literarios y la catedral más grande de Centroamérica.",
+                c8_climate: "Cálido seco (32°C – 37°C)",
+                c8_access: "1.5 horas desde Managua",
+                c8_cost: "Entrada azotea catedral $5",
+                c8_act1_title: "Caminata en Cúpulas",
+                c8_act1_desc: "Paseo descalzo sobre los techos blancos de la Catedral con vistas al volcán.",
+                c8_act2_title: "Visita al Museo Rubén Darío",
+                c8_act2_desc: "Recorrido por la casa donde vivió el poeta universal de habla hispana."
+            },
+            en: {
+                nav_discover: "Discover",
+                nav_hotels: "Hotels",
+                nav_foros: "Forums",
+                nav_contact: "Contact",
+                nav_signin: "Sign in",
+                hero_badge: "Complete Destination Guide",
+                hero_title: "Discover Nicaragua",
+                hero_subtitle: "Explore active volcanoes, surf beaches, nature reserves, and historical cities with key data for your trip.",
+                filter_all: "All places",
+                filter_volcanoes: "Volcanoes & Adventure",
+                filter_reserves: "Reserves & Lakes",
+                filter_history: "Historical Cities",
+                filter_beaches: "Beaches & Coast",
+                cat_volcanoes: "Volcanoes & Adventure",
+                cat_reserves: "Reserves & Lakes",
+                cat_history: "Historical Cities",
+                cat_beaches: "Beaches & Coast",
+                lbl_climate: "Climate",
+                lbl_access: "Access",
+                lbl_cost: "Cost",
+                lbl_todo: "What you must do:",
+                c1_title: "Cerro Negro Volcano",
+                c1_desc: "Central America's youngest volcano. Its loose ash slope is the perfect track for Volcano Boarding at speeds up to 60 km/h.",
+                c1_climate: "Warm and dry (30°C – 35°C)",
+                c1_access: "45 min in 4x4 from León",
+                c1_cost: "Tours $25 – $35",
+                c1_act1_title: "Volcanic Sandboarding",
+                c1_act1_desc: "High-speed board descent down the black slope.",
+                c1_act2_title: "Crater Trekking",
+                c1_act2_desc: "Summit walk observing sulfur fumaroles.",
+                c2_title: "Ometepe Island",
+                c2_desc: "An island formed by two volcanoes (Concepción and Maderas) in the middle of Lake Cocibolca. Declared a UNESCO Biosphere Reserve.",
+                c2_climate: "Humid tropical (26°C – 32°C)",
+                c2_access: "1h ferry from San Jorge",
+                c2_cost: "Ferry $2.50 ticket",
+                c2_act1_title: "Ojo de Agua Spring",
+                c2_act1_desc: "Crystal clear natural spring waters surrounded by jungle.",
+                c2_act2_title: "San Ramón Waterfall",
+                c2_act2_desc: "Hiking on the slopes of the Maderas volcano to the waterfall.",
+                c2_act3_title: "Punta Jesús María",
+                c2_act3_desc: "Walk on a unique sand tongue inside the lake.",
+                c3_title: "Colonial Granada",
+                c3_desc: "Founded in 1524, full of mansions with internal patios, historical churches, and a classic colonial atmosphere by the great lake.",
+                c3_climate: "Warm tropical (28°C – 34°C)",
+                c3_access: "45 min from Managua",
+                c3_cost: "Boat tours $20 - $30",
+                c3_act1_title: "La Merced Tower",
+                c3_act1_desc: "360-degree view over the city's red rooftops.",
+                c3_act2_title: "Islets Tour",
+                c3_act2_desc: "Boat tour through the Cocibolca lake archipelago.",
+                c3_act3_title: "La Calzada Street",
+                c3_act3_desc: "Night walk among restaurants, music, and architecture.",
+                c4_title: "San Juan del Sur",
+                c4_desc: "The mecca of surf and nightlife on the Nicaraguan Pacific coast, surrounded by bays and beaches suitable for all levels.",
+                c4_climate: "Sunny (27°C – 33°C)",
+                c4_access: "2.5 hours from Managua",
+                c4_cost: "Board rental $10/day",
+                c4_act1_title: "Surf Lessons",
+                c4_act1_desc: "Sessions at Playa Maderas with local instructors.",
+                c4_act2_title: "Christ Lookout",
+                c4_act2_desc: "Complete panoramic view of the bay at sunset.",
+                c4_act3_title: "Playa Maderas Excursion",
+                c4_act3_desc: "Golden sand and consistent waves surrounded by cliffs.",
+                c5_title: "Masaya Volcano",
+                c5_desc: "One of the few places in the world where you can look directly over the edge of an active crater with an incandescent lava lake.",
+                c5_climate: "Warm and windy (27°C – 32°C)",
+                c5_access: "30 min from Managua",
+                c5_cost: "Admission $10 - $15",
+                c5_act1_title: "Night Lava Tour",
+                c5_act1_desc: "Observation of red magma glow in the total darkness of the crater.",
+                c5_act2_title: "Visitor Center",
+                c5_act2_desc: "Exhibition on volcanology, mythology, and park biodiversity.",
+                c6_title: "Corn Island",
+                c6_desc: "A Caribbean paradise of turquoise waters, coral reefs, and coconut palms, ideal for disconnecting and enjoying Afro-Caribbean culture.",
+                c6_climate: "Warm tropical (29°C – 32°C)",
+                c6_access: "Short flight from Managua",
+                c6_cost: "Diving $50 – $80",
+                c6_act1_title: "Diving & Snorkel",
+                c6_act1_desc: "Exploration of coral gardens and multicolored marine life.",
+                c6_act2_title: "South End Tour",
+                c6_act2_desc: "Virgin white sand beaches surrounded by solitary palms.",
+                c7_title: "Somoto Canyon",
+                c7_desc: "One of Central America's most striking rock formations, sculpted by the Coco River with rock walls over 100 meters high.",
+                c7_climate: "Cool to warm (24°C – 30°C)",
+                c7_access: "3 hours from Managua",
+                c7_cost: "Local guide and gear $15 – $25",
+                c7_act1_title: "River Swimming & Floating",
+                c7_act1_desc: "Guided tour floating between narrow stone walls.",
+                c7_act2_title: "Cliff Jumping",
+                c7_act2_desc: "Pure adrenaline jumping from boulders into deep pools.",
+                c8_title: "Metropolitan León",
+                c8_desc: "University city full of revolutionary murals, art, literary museums, and Central America's largest cathedral.",
+                c8_climate: "Warm dry (32°C – 37°C)",
+                c8_access: "1.5 hours from Managua",
+                c8_cost: "Cathedral rooftop entry $5",
+                c8_act1_title: "Dome Walk",
+                c8_act1_desc: "Barefoot walk on the cathedral's white roofs with volcano views.",
+                c8_act2_title: "Rubén Darío Museum Visit",
+                c8_act2_desc: "Tour of the house where the Spanish-speaking universal poet lived."
+            }
+        };
+
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langText = document.getElementById('lang-text');
+        const pageContent = document.getElementById('pageContent');
+
+        function setLanguage(lang) {
+            pageContent.classList.add('fade-out');
+
+            setTimeout(() => {
+                document.documentElement.setAttribute('lang', lang);
+                localStorage.setItem('gonic-lang', lang);
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+
+                if (langText) {
+                    langText.textContent = lang === 'es' ? 'EN' : 'ES';
+                }
+
+                pageContent.classList.remove('fade-out');
+            }, 350);
+        }
+
+        const savedLang = localStorage.getItem('gonic-lang') || 'es';
+        setLanguage(savedLang);
+
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                const currentLang = document.documentElement.getAttribute('lang') || 'es';
+                setLanguage(currentLang === 'es' ? 'en' : 'es');
+            });
+        }
+
+        // Cambio de Tema
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+
+        const moonSVG = `
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>`;
+
+        const sunSVG = `
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>`;
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('gonic-theme', theme);
+
+            if (theme === 'dark') {
+                themeIcon.innerHTML = sunSVG;
+                themeText.textContent = 'Claro';
+            } else {
+                themeIcon.innerHTML = moonSVG;
+                themeText.textContent = 'Oscuro';
+            }
+        }
+
+        const savedTheme = localStorage.getItem('gonic-theme') || 'light';
+        applyTheme(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(nextTheme);
+        });
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.destination-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'grid';
+                        card.style.animation = 'none';
+                        void card.offsetWidth;
+                        card.style.animation = 'smoothFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

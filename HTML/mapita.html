@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa interactivo - Promociona tu local</title>
+    
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    
+    <link rel="stylesheet" href="../CSS/mapita.css">
+
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+
+        <!-- logo -->
+        <div class="logo">
+            <img src="../ASSETS/img/ISOTIPOGONIC.png" alt="GONIC">
+            <h3>GONIC</h3>
+        </div>
+
+        <!-- Eslogan -->
+        <div class="slogan">
+            <span>Tierra de lagos y volcanes</span>
+        </div>
+
+        <!-- Botón Home y Usuario -->
+        <div class="nav-actions">
+            <!-- Botón Home -->
+            <a href="../index.html" class="home-btn" title="Ir al inicio">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+
+            <!-- Botón de usuario -->
+            <div class="user-menu">
+                <div class="user-profile" onclick="toggleDropdown()">
+                    <img src="../ASSETS/img/ISOTIPOGONIC.png" alt="Usuario" class="user-avatar">
+                    <span class="user-name">Pepito</span>
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-download"></i> Descargar aplicación móvil
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-cog"></i> Configuraciones
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-question-circle"></i> Ayuda
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item logout">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- Contenido principal-->
+    <div class="main-wrapper">
+        
+        <div class="main">
+
+            <div class="container">
+
+                <div class="map-container">
+                    <div class="map" id="map"></div>
+                </div>
+
+                <div class="marked-container">
+
+                    <h1>Promociona tu local en el Mapa</h1>
+
+                    <hr>
+
+                    <div class="marker">
+
+                        <div class="input-group">
+                            <h3>Nombre del local:</h3>
+                            <input id="placeName" type="text" placeholder="Ej: Café Central">
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Descripción:</h3>
+                            <textarea id="placeDescription" placeholder="Breve descripción del local"></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Imagen (URL):</h3>
+                            <input id="placeImage" type="text" placeholder="https://ejemplo.com/imagen.jpg">
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Teléfono:</h3>
+                            <input id="placePhone" type="text" placeholder="+505 1234-5678">
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Redes Sociales:</h3>
+                            <div class="social-inputs">
+                                <input id="placeFacebook" type="text" placeholder="Facebook: @ejemplo">
+                                <input id="placeInstagram" type="text" placeholder="Instagram: @ejemplo">
+                                <input id="placeTwitter" type="text" placeholder="Twitter: @ejemplo">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Latitud:</h3>
+                            <input id="latitude" type="text" readonly>
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Longitud:</h3>
+                            <input id="longitude" type="text" readonly>
+                        </div>
+
+                        <button id="saveMarker" onclick="saveMarker()">
+                            <i class="fas fa-map-pin"></i> Promocionar Local
+                        </button>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="marked">
+
+                        <h2>Locales Promocionados</h2>
+                        <p class="subtitle">Haz clic en el marcador para ver la información</p>
+
+                        <ul id="markedLocations"></ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <img src="../ASSETS/img/ISOTIPOGONIC.png" alt="GONIC" style="height: 30px; width: auto; margin-right: 8px;">
+                        GONIC
+                    </h3>
+                    <p>Promocionando los mejores locales de Nicaragua</p>
+                    <p class="footer-slogan">"Tierra de lagos y volcanes"</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3><i class="fas fa-envelope"></i> Contáctanos</h3>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:GONIC@gmail.com">GONIC@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> +505 1234-5678</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3><i class="fas fa-share-alt"></i> Síguenos</h3>
+                    <div class="footer-social">
+                        <a href="#" onclick="window.open('https://facebook.com/GONIC', '_blank')" title="Facebook">
+                            <i class="fab fa-facebook"></i> GONIC
+                        </a>
+                        <a href="#" onclick="window.open('https://instagram.com/GONIC', '_blank')" title="Instagram">
+                            <i class="fab fa-instagram"></i> GONIC
+                        </a>
+                        <a href="#" onclick="window.open('https://twitter.com/GONIC', '_blank')" title="Twitter">
+                            <i class="fab fa-twitter"></i> GONIC
+                        </a>
+                        <a href="#" onclick="window.open('https://youtube.com/GONIC', '_blank')" title="YouTube">
+                            <i class="fab fa-youtube"></i> GONIC
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3><i class="fas fa-info-circle"></i> Acerca de</h3>
+                    <p>Plataforma interactiva para promocionar locales comerciales en el mapa de Nicaragua.</p>
+                    <p class="footer-version">Versión 1.0</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 GONIC - Todos los derechos reservados</p>
+                <p class="footer-credits">Desarrollado con <i class="fas fa-heart" style="color: rgb(218, 231, 153);"></i> para la comunidad</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Leaflet.js JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Script JS -->
+    <script src="../mapita.js"></script>
+
+    <!-- Script para el dropdown -->
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show');
+        }
+
+        // Cerrar el dropdown al hacer clic fuera
+        window.onclick = function(event) {
+            if (!event.target.closest('.user-menu')) {
+                var dropdowns = document.getElementsByClassName('dropdown-menu');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

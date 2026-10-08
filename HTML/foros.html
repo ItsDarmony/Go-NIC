@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/foros_style.css">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /*SECCIÓN DE HOTELES EN EL FORO*/
 
@@ -288,7 +291,7 @@
         }
 
         /* ============================================================
-           MODAL DE RESEÑAS (FORO)
+           MODAL DE RESEÑAS
            ============================================================ */
 
         .forum-review-modal {
@@ -544,8 +547,9 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            padding: 14px 22px 18px;
+            padding: 14px 0 0;
             border-top: 1px solid rgba(218, 231, 153, 0.2);
+            margin-top: 14px;
         }
 
         .forum-btn {
@@ -584,24 +588,127 @@
             transform: translateY(-2px);
         }
 
-        /* Lista de reseñas dentro del modal */
-        .forum-reviews-list {
+        .forum-add-review-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(218, 231, 153, 0.08);
+            border: 2px dashed rgba(218, 231, 153, 0.4);
+            border-radius: 10px;
+            color: rgb(218, 231, 153);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .forum-add-review-btn:hover {
+            background: rgba(218, 231, 153, 0.15);
+            border-color: rgb(218, 231, 153);
+        }
+
+        .forum-reviews-summary-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px;
+            background: rgba(218, 231, 153, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(218, 231, 153, 0.15);
+            margin-bottom: 8px;
+        }
+
+        .forum-reviews-average {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            max-height: 250px;
-            overflow-y: auto;
-            margin-top: 6px;
-            padding-right: 4px;
+            align-items: center;
+            justify-content: center;
+            min-width: 65px;
+            padding-right: 14px;
+            border-right: 1px solid rgba(218, 231, 153, 0.15);
         }
 
-        .forum-reviews-list::-webkit-scrollbar {
-            width: 5px;
+        .forum-reviews-average-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: rgb(218, 231, 153);
+            line-height: 1;
+            margin-bottom: 4px;
         }
 
-        .forum-reviews-list::-webkit-scrollbar-thumb {
-            background: rgba(218, 231, 153, 0.3);
+        .forum-reviews-average-stars {
+            display: flex;
+            gap: 2px;
+            color: #f5c518;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .forum-reviews-average-count {
+            font-size: 10px;
+            color: rgba(218, 231, 153, 0.5);
+            white-space: nowrap;
+        }
+
+        .forum-reviews-chart {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .forum-chart-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+        }
+
+        .forum-chart-label {
+            color: rgba(218, 231, 153, 0.8);
+            font-weight: 600;
+            width: 20px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .forum-chart-bar-bg {
+            flex: 1;
+            height: 6px;
+            background: rgba(218, 231, 153, 0.1);
             border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .forum-chart-bar-fill {
+            height: 100%;
+            background: #f5c518;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .forum-chart-count {
+            color: rgba(218, 231, 153, 0.6);
+            font-size: 10px;
+            width: 22px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .forum-reviews-section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgb(218, 231, 153);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(218, 231, 153, 0.2);
         }
 
         .forum-review-item {
@@ -609,6 +716,7 @@
             background: rgba(218, 231, 153, 0.05);
             border-radius: 10px;
             border: 1px solid rgba(218, 231, 153, 0.1);
+            margin-bottom: 8px;
         }
 
         .forum-review-item-header {
@@ -679,43 +787,24 @@
             font-size: 0.85rem;
             font-style: italic;
         }
-
-        .forum-reviews-section-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: rgb(218, 231, 153);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 8px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(218, 231, 153, 0.2);
-        }
     </style>
-
-    <!-- Font Awesome para íconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
     <!--HEADER-->
-
     <header>
         <div class="nav-container">
 
-            <a href="../index.html" class="logo">
-                Go<span>NIC</span>
-            </a>
+            <a href="../index.html" class="logo">Go<span>NIC</span></a>
 
             <nav>
                 <ul class="nav-links">
-
                     <li><a href="../index.html" data-i18n="nav_home">Inicio</a></li>
                     <li><a href="descubrir.html" data-i18n="nav_discover">Descubrir</a></li>
                     <li><a href="mapita.html" data-i18n="nav_map">Mapa</a></li>
                     <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
 
-                    <!-- TEMA -->
                     <li>
                         <button type="button" id="theme-toggle" class="nav-theme-btn" aria-label="Cambiar tema">
                             <span id="theme-icon" style="display:flex;align-items:center;"></span>
@@ -723,18 +812,13 @@
                         </button>
                     </li>
 
-                    <!-- IDIOMA -->
                     <li>
                         <button type="button" id="lang-toggle" class="nav-theme-btn" aria-label="Cambiar idioma">
                             <span id="lang-text">EN</span>
                         </button>
                     </li>
 
-                    <!-- LOGIN -->
-                    <li>
-                        <a href="login.html" class="btn-signin" data-i18n="nav_signin">Iniciar sesión</a>
-                    </li>
-
+                    <li><a href="login.html" class="btn-signin" data-i18n="nav_signin">Iniciar sesión</a></li>
                 </ul>
             </nav>
 
@@ -742,10 +826,7 @@
     </header>
 
 
-    <!-- =========================
-        CONTENIDO
-    ========================== -->
-
+    <!--CONTENIDO-->
     <main class="entrepreneur-page">
 
         <!-- HERO -->
@@ -759,10 +840,7 @@
         </section>
 
 
-        <!-- =========================
-            SECCIÓN DE HOTELES
-        ========================== -->
-
+        <!--SECCIÓN DE HOTELES-->
         <section class="forum-hotels-section">
 
             <h2>Hoteles destacados</h2>
@@ -802,7 +880,7 @@
                         </div>
                         <div class="forum-hotel-footer">
                             <span class="forum-hotel-price">$110 <small>/ noche</small></span>
-                            <button class="btn-view-reviews" onclick="openForumReviews('Hotel Plaza Colón')">
+                            <button class="btn-view-reviews" data-hotel="Hotel Plaza Colón">
                                 <i class="fas fa-star"></i> Ver reseñas
                             </button>
                         </div>
@@ -824,7 +902,7 @@
                         </div>
                         <div class="forum-hotel-footer">
                             <span class="forum-hotel-price">$350 <small>/ noche</small></span>
-                            <button class="btn-view-reviews" onclick="openForumReviews('Jicaro Island Lodge')">
+                            <button class="btn-view-reviews" data-hotel="Jicaro Island Lodge">
                                 <i class="fas fa-star"></i> Ver reseñas
                             </button>
                         </div>
@@ -846,7 +924,7 @@
                         </div>
                         <div class="forum-hotel-footer">
                             <span class="forum-hotel-price">$145 <small>/ noche</small></span>
-                            <button class="btn-view-reviews" onclick="openForumReviews('Tribal Hotel')">
+                            <button class="btn-view-reviews" data-hotel="Tribal Hotel">
                                 <i class="fas fa-star"></i> Ver reseñas
                             </button>
                         </div>
@@ -868,7 +946,7 @@
                         </div>
                         <div class="forum-hotel-footer">
                             <span class="forum-hotel-price">$80 <small>/ noche</small></span>
-                            <button class="btn-view-reviews" onclick="openForumReviews('Hotel Darcia Boutique')">
+                            <button class="btn-view-reviews" data-hotel="Hotel Darcia Boutique">
                                 <i class="fas fa-star"></i> Ver reseñas
                             </button>
                         </div>
@@ -890,7 +968,7 @@
                         </div>
                         <div class="forum-hotel-footer">
                             <span class="forum-hotel-price">$240 <small>/ noche</small></span>
-                            <button class="btn-view-reviews" onclick="openForumReviews"(&quot;Morgan's Rock Eco-Lodge&quot;)">
+                            <button class="btn-view-reviews" data-hotel="Morgan's Rock Eco-Lodge">
                                 <i class="fas fa-star"></i> Ver reseñas
                             </button>
                         </div>
@@ -912,7 +990,7 @@
                         </div>
                         <div class="forum-hotel-footer">
                             <span class="forum-hotel-price">$175 <small>/ noche</small></span>
-                            <button class="btn-view-reviews" onclick="openForumReviews('Pelican Eyes Resort')">
+                            <button class="btn-view-reviews" data-hotel="Pelican Eyes Resort">
                                 <i class="fas fa-star"></i> Ver reseñas
                             </button>
                         </div>
@@ -934,4 +1012,487 @@
                         </div>
                         <div class="forum-hotel-footer">
                             <span class="forum-hotel-price">$85 <small>/ noche</small></span>
-                            <button class="
+                            <button class="btn-view-reviews" data-hotel="Totoco Eco-Lodge">
+                                <i class="fas fa-star"></i> Ver reseñas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Finca Magdalena -->
+                <div class="forum-hotel-card" data-hotel-name="Finca Magdalena Eco-Hostel">
+                    <div class="forum-hotel-image">
+                        <img src="../ASSETS/hotel_ometepe2.webp" alt="Finca Magdalena"
+                            onerror="this.src='../ASSETS/img/ISOTIPOGONIC.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    </div>
+                    <div class="forum-hotel-body">
+                        <h3 class="forum-hotel-name">Finca Magdalena Eco-Hostel</h3>
+                        <p class="forum-hotel-location"><i class="fas fa-map-marker-alt"></i> Volcán Maderas, Ometepe</p>
+                        <div class="forum-hotel-rating"><i class="fas fa-star"></i> 4.6</div>
+                        <div class="forum-hotel-reviews-count" data-reviews-for="Finca Magdalena Eco-Hostel">
+                            <i class="fas fa-comment"></i> <span class="reviews-count">0</span> reseñas
+                        </div>
+                        <div class="forum-hotel-footer">
+                            <span class="forum-hotel-price">$40 <small>/ noche</small></span>
+                            <button class="btn-view-reviews" data-hotel="Finca Magdalena Eco-Hostel">
+                                <i class="fas fa-star"></i> Ver reseñas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Villas Paraíso Ometepe -->
+                <div class="forum-hotel-card" data-hotel-name="Villas Paraíso Ometepe">
+                    <div class="forum-hotel-image">
+                        <img src="../ASSETS/hotel_villas_ometepe.jpg" alt="Villas Paraíso Ometepe"
+                            onerror="this.src='../ASSETS/img/ISOTIPOGONIC.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    </div>
+                    <div class="forum-hotel-body">
+                        <h3 class="forum-hotel-name">Villas Paraíso Ometepe</h3>
+                        <p class="forum-hotel-location"><i class="fas fa-map-marker-alt"></i> Playa Santo Domingo, Ometepe</p>
+                        <div class="forum-hotel-rating"><i class="fas fa-star"></i> 4.7</div>
+                        <div class="forum-hotel-reviews-count" data-reviews-for="Villas Paraíso Ometepe">
+                            <i class="fas fa-comment"></i> <span class="reviews-count">0</span> reseñas
+                        </div>
+                        <div class="forum-hotel-footer">
+                            <span class="forum-hotel-price">$90 <small>/ noche</small></span>
+                            <button class="btn-view-reviews" data-hotel="Villas Paraíso Ometepe">
+                                <i class="fas fa-star"></i> Ver reseñas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Hotel Ojos del Agua -->
+                <div class="forum-hotel-card" data-hotel-name="Hotel Ojos del Agua">
+                    <div class="forum-hotel-image">
+                        <img src="../ASSETS/hotel_charco_verde.jpg" alt="Hotel Ojos del Agua"
+                            onerror="this.src='../ASSETS/img/ISOTIPOGONIC.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    </div>
+                    <div class="forum-hotel-body">
+                        <h3 class="forum-hotel-name">Hotel Ojos del Agua</h3>
+                        <p class="forum-hotel-location"><i class="fas fa-map-marker-alt"></i> Moyogalpa, Ometepe</p>
+                        <div class="forum-hotel-rating"><i class="fas fa-star"></i> 4.8</div>
+                        <div class="forum-hotel-reviews-count" data-reviews-for="Hotel Ojos del Agua">
+                            <i class="fas fa-comment"></i> <span class="reviews-count">0</span> reseñas
+                        </div>
+                        <div class="forum-hotel-footer">
+                            <span class="forum-hotel-price">$95 <small>/ noche</small></span>
+                            <button class="btn-view-reviews" data-hotel="Hotel Ojos del Agua">
+                                <i class="fas fa-star"></i> Ver reseñas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ============================================================
+         MODAL DE RESEÑAS
+         ============================================================ -->
+    <div class="forum-review-modal" id="forumReviewModal">
+        <div class="forum-review-content">
+            <div class="forum-review-header">
+                <i class="fas fa-star"></i>
+                <h3 id="forumReviewModalTitle">Reseñas</h3>
+                <button class="forum-review-close" onclick="closeForumReviews()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="forum-review-body">
+                <!-- Resumen -->
+                <div id="forumReviewsSummary"></div>
+
+                <!-- Botón Añadir reseña -->
+                <button type="button" class="forum-add-review-btn" id="forumAddReviewBtn" onclick="showForumReviewForm()">
+                    <i class="fas fa-plus"></i> Añadir reseña
+                </button>
+
+                <!-- Formulario -->
+                <div id="forumReviewForm" style="display:none;">
+                    <div class="forum-user-info">
+                        <img src="../ASSETS/img/ISOTIPOGONIC.png" alt="Usuario" class="forum-user-avatar" id="forumReviewUserAvatar">
+                        <div class="forum-user-details">
+                            <strong id="forumReviewUserName">Pepito</strong>
+                            <span>Ahora</span>
+                        </div>
+                    </div>
+
+                    <label class="forum-review-label">Calificación:</label>
+                    <div class="forum-star-selector" id="forumStarSelector">
+                        <i class="fas fa-star" data-value="1"></i>
+                        <i class="fas fa-star" data-value="2"></i>
+                        <i class="fas fa-star" data-value="3"></i>
+                        <i class="fas fa-star" data-value="4"></i>
+                        <i class="fas fa-star" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="forumReviewRating" value="0">
+
+                    <label class="forum-review-label">Tu reseña:</label>
+                    <textarea id="forumReviewText" class="forum-review-textarea" placeholder="Cuéntanos tu experiencia..." maxlength="500"></textarea>
+
+                    <label class="forum-review-label">Añadir imagen (opcional):</label>
+                    <div class="forum-image-upload-wrapper">
+                        <input type="file" id="forumReviewImage" accept="image/*" class="forum-image-file-input" onchange="previewForumReviewImage(event)">
+                        <label for="forumReviewImage" class="forum-image-upload-label">
+                            <i class="fas fa-camera"></i>
+                            <span>Subir imagen desde el dispositivo</span>
+                        </label>
+                    </div>
+                    <div id="forumReviewImagePreviewContainer" class="forum-image-preview-container" style="display:none;">
+                        <img id="forumReviewImagePreview" class="forum-image-preview" alt="Vista previa">
+                        <button type="button" class="forum-image-remove" onclick="removeForumReviewImage()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="forum-review-footer">
+                        <button type="button" class="forum-btn forum-btn-publish" onclick="publishForumReview()">
+                            <i class="fas fa-check"></i> Publicar
+                        </button>
+                        <button type="button" class="forum-btn forum-btn-cancel" onclick="hideForumReviewForm()">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lista de reseñas -->
+                <div class="forum-reviews-section-title">Reseñas de la comunidad</div>
+                <div id="forumReviewsList"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+    <script>
+    /* ============================================================
+       SISTEMA DE RESEÑAS DEL FORO
+       ============================================================ */
+
+    var forumHotelReviews = {};
+    var currentForumHotel = null;
+    var currentForumReviewRating = 0;
+    var currentForumReviewImageBase64 = null;
+
+    /* ------------------------------------------------------------
+       ABRIR / CERRAR MODAL
+       ------------------------------------------------------------ */
+    function openForumReviews(hotelName) {
+        currentForumHotel = hotelName;
+
+        if (!forumHotelReviews[hotelName]) {
+            forumHotelReviews[hotelName] = [];
+        }
+
+        document.getElementById('forumReviewModalTitle').textContent = hotelName;
+        hideForumReviewForm();
+        renderForumReviews();
+        document.getElementById('forumReviewModal').classList.add('show');
+    }
+
+    function closeForumReviews() {
+        document.getElementById('forumReviewModal').classList.remove('show');
+        currentForumHotel = null;
+        currentForumReviewRating = 0;
+        currentForumReviewImageBase64 = null;
+    }
+
+    /* ------------------------------------------------------------
+       FORMULARIO
+       ------------------------------------------------------------ */
+    function showForumReviewForm() {
+        document.getElementById('forumReviewForm').style.display = 'block';
+
+        currentForumReviewRating = 0;
+        document.getElementById('forumReviewRating').value = 0;
+        document.querySelectorAll('#forumStarSelector i').forEach(function(s) {
+            s.classList.remove('selected', 'hovered');
+        });
+
+        document.getElementById('forumReviewText').value = '';
+
+        currentForumReviewImageBase64 = null;
+        document.getElementById('forumReviewImage').value = '';
+        document.getElementById('forumReviewImagePreviewContainer').style.display = 'none';
+        document.getElementById('forumReviewImagePreview').src = '';
+
+        setupForumStarEvents();
+    }
+
+    function hideForumReviewForm() {
+        document.getElementById('forumReviewForm').style.display = 'none';
+        currentForumReviewRating = 0;
+        currentForumReviewImageBase64 = null;
+    }
+
+    /* ------------------------------------------------------------
+       SELECTOR DE ESTRELLAS
+       ------------------------------------------------------------ */
+    function setupForumStarEvents() {
+        var starSelector = document.getElementById('forumStarSelector');
+        if (!starSelector || starSelector.dataset.eventsSetup === 'true') return;
+
+        var stars = starSelector.querySelectorAll('i');
+
+        stars.forEach(function(star) {
+            star.addEventListener('mouseenter', function() {
+                var value = parseInt(this.getAttribute('data-value'));
+                stars.forEach(function(s) {
+                    s.classList.toggle('hovered', parseInt(s.getAttribute('data-value')) <= value);
+                });
+            });
+
+            star.addEventListener('click', function() {
+                var value = parseInt(this.getAttribute('data-value'));
+                currentForumReviewRating = value;
+                document.getElementById('forumReviewRating').value = value;
+                stars.forEach(function(s) {
+                    s.classList.toggle('selected', parseInt(s.getAttribute('data-value')) <= value);
+                });
+            });
+        });
+
+        starSelector.addEventListener('mouseleave', function() {
+            stars.forEach(function(s) { s.classList.remove('hovered'); });
+        });
+
+        starSelector.dataset.eventsSetup = 'true';
+    }
+
+    /* ------------------------------------------------------------
+       IMAGEN
+       ------------------------------------------------------------ */
+    function previewForumReviewImage(event) {
+        var file = event.target.files[0];
+        if (!file) return;
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            currentForumReviewImageBase64 = e.target.result;
+            document.getElementById('forumReviewImagePreview').src = e.target.result;
+            document.getElementById('forumReviewImagePreviewContainer').style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removeForumReviewImage() {
+        currentForumReviewImageBase64 = null;
+        document.getElementById('forumReviewImage').value = '';
+        document.getElementById('forumReviewImagePreview').src = '';
+        document.getElementById('forumReviewImagePreviewContainer').style.display = 'none';
+    }
+
+    /*PUBLICAR*/
+    function publishForumReview() {
+        if (!currentForumHotel) return;
+
+        if (currentForumReviewRating === 0) {
+            alert('Por favor selecciona una calificación con las estrellas');
+            return;
+        }
+
+        var text = document.getElementById('forumReviewText').value.trim();
+        if (!text) {
+            alert('Por favor escribe tu reseña');
+            return;
+        }
+
+        var newReview = {
+            id: 'review-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+            userName: 'Pepito',
+            userAvatar: '../ASSETS/img/ISOTIPOGONIC.png',
+            rating: currentForumReviewRating,
+            text: text,
+            image: currentForumReviewImageBase64 || null,
+            timestamp: Date.now()
+        };
+
+        forumHotelReviews[currentForumHotel].push(newReview);
+        updateForumReviewsCount(currentForumHotel);
+        renderForumReviews();
+        hideForumReviewForm();
+    }
+
+    /*RENDERIZAR*/
+    function renderForumReviews() {
+        if (!currentForumHotel) return;
+
+        var reviews = forumHotelReviews[currentForumHotel] || [];
+        var summaryEl = document.getElementById('forumReviewsSummary');
+        var listEl = document.getElementById('forumReviewsList');
+
+        if (reviews.length === 0) {
+            summaryEl.innerHTML = '';
+        } else {
+            var total = reviews.length;
+            var sum = reviews.reduce(function(acc, r) { return acc + r.rating; }, 0);
+            var average = (sum / total).toFixed(1);
+
+            var distribution = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+            reviews.forEach(function(r) { distribution[r.rating]++; });
+
+            var avgStarsHTML = '';
+            for (var i = 1; i <= 5; i++) {
+                avgStarsHTML += i <= Math.round(average)
+                    ? '<i class="fas fa-star"></i>'
+                    : '<i class="far fa-star"></i>';
+            }
+
+            var chartRows = '';
+            for (var star = 5; star >= 1; star--) {
+                var count = distribution[star];
+                var percent = total > 0 ? (count / total) * 100 : 0;
+                chartRows += `
+                    <div class="forum-chart-row">
+                        <span class="forum-chart-label">${star}★</span>
+                        <div class="forum-chart-bar-bg">
+                            <div class="forum-chart-bar-fill" style="width: ${percent}%"></div>
+                        </div>
+                        <span class="forum-chart-count">${count}</span>
+                    </div>
+                `;
+            }
+
+            summaryEl.innerHTML = `
+                <div class="forum-reviews-summary-box">
+                    <div class="forum-reviews-average">
+                        <div class="forum-reviews-average-number">${average}</div>
+                        <div class="forum-reviews-average-stars">${avgStarsHTML}</div>
+                        <div class="forum-reviews-average-count">${total} reseña${total !== 1 ? 's' : ''}</div>
+                    </div>
+                    <div class="forum-reviews-chart">${chartRows}</div>
+                </div>
+            `;
+        }
+
+        if (reviews.length === 0) {
+            listEl.innerHTML = `
+                <div class="forum-no-reviews">
+                    Aún no hay reseñas para este hotel.<br>¡Sé el primero en dejar una!
+                </div>
+            `;
+            return;
+        }
+
+        var sorted = reviews.slice().sort(function(a, b) { return b.timestamp - a.timestamp; });
+
+        listEl.innerHTML = sorted.map(function(review) {
+            var starsHTML = '';
+            for (var i = 1; i <= 5; i++) {
+                starsHTML += i <= review.rating
+                    ? '<i class="fas fa-star"></i>'
+                    : '<i class="far fa-star"></i>';
+            }
+
+            var imageHTML = review.image
+                ? `<img src="${review.image}" class="forum-review-item-image" alt="Imagen de la reseña">`
+                : '';
+
+            return `
+                <div class="forum-review-item">
+                    <div class="forum-review-item-header">
+                        <img src="${review.userAvatar}" class="forum-review-item-avatar" alt="${review.userName}">
+                        <div class="forum-review-item-meta">
+                            <p class="forum-review-item-name">${review.userName}</p>
+                            <p class="forum-review-item-time">${getForumTimeAgo(review.timestamp)}</p>
+                        </div>
+                        <div class="forum-review-item-stars">${starsHTML}</div>
+                    </div>
+                    <p class="forum-review-item-text">${review.text}</p>
+                    ${imageHTML}
+                </div>
+            `;
+        }).join('');
+    }
+
+    /*TIEMPO RELATIVO*/
+    function getForumTimeAgo(timestamp) {
+        var diff = Date.now() - timestamp;
+        var seconds = Math.floor(diff / 1000);
+        var minutes = Math.floor(seconds / 60);
+        var hours = Math.floor(minutes / 60);
+        var days = Math.floor(hours / 24);
+        var months = Math.floor(days / 30);
+        var years = Math.floor(days / 365);
+
+        if (seconds < 60) return 'Hace unos segundos';
+        if (minutes < 60) return 'Hace ' + minutes + ' min';
+        if (hours < 24) return 'Hace ' + hours + ' hora' + (hours !== 1 ? 's' : '');
+        if (days < 30) return 'Hace ' + days + ' día' + (days !== 1 ? 's' : '');
+        if (months < 12) return 'Hace ' + months + ' mes' + (months !== 1 ? 'es' : '');
+        return 'Hace ' + years + ' año' + (years !== 1 ? 's' : '');
+    }
+
+    /*ACTUALIZAR CONTADOR */
+    function updateForumReviewsCount(hotelName) {
+        var reviews = forumHotelReviews[hotelName] || [];
+        var counters = document.querySelectorAll('[data-reviews-for="' + hotelName + '"] .reviews-count');
+        counters.forEach(function(el) {
+            el.textContent = reviews.length;
+        });
+    }
+
+    /*BUSCADOR Y EVENTOS */
+    document.addEventListener('DOMContentLoaded', function() {
+        var searchInput = document.getElementById('forum-hotel-search');
+        var clearBtn = document.getElementById('forum-clear-search');
+        var cards = document.querySelectorAll('.forum-hotel-card');
+
+        // Buscador
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                var term = this.value.toLowerCase().trim();
+                cards.forEach(function(card) {
+                    var name = card.getAttribute('data-hotel-name').toLowerCase();
+                    card.style.display = name.includes(term) ? '' : 'none';
+                });
+                clearBtn.classList.toggle('visible', term.length > 0);
+            });
+
+            clearBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                cards.forEach(function(card) { card.style.display = ''; });
+                clearBtn.classList.remove('visible');
+                searchInput.focus();
+            });
+        }
+
+        // Botones "Ver reseñas" con delegación de eventos
+        cards.forEach(function(card) {
+            var btn = card.querySelector('.btn-view-reviews');
+            if (btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var hotelName = this.getAttribute('data-hotel');
+                    openForumReviews(hotelName);
+                });
+            }
+        });
+
+        // Cerrar modal al hacer clic fuera
+        var modal = document.getElementById('forumReviewModal');
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeForumReviews();
+        });
+
+        // Cerrar con Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                var m = document.getElementById('forumReviewModal');
+                if (m.classList.contains('show')) closeForumReviews();
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

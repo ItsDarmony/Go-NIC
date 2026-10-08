@@ -258,56 +258,53 @@
         }
 
         /* Fila inferior: precio + botón cómo llegar */
-.hotel-bottom-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin-top: 4px;
-}
+        .hotel-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
 
-.hotel-bottom-row .hotel-price-tag {
-    margin: 0;
-}
+        .hotel-bottom-row .hotel-price-tag {
+            margin: 0;
+        }
 
-.btn-route-card {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 6px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    color: rgb(13, 60, 48);
-    background-color: #DAE799;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    white-space: nowrap;
-}
+        .btn-route-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: rgb(13, 60, 48);
+            background-color: #DAE799;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
 
-.btn-route-card:hover {
-    background-color: #c8d880;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(218, 231, 153, 0.4);
-}
+        .btn-route-card:hover {
+            background-color: #c8d880;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(218, 231, 153, 0.4);
+        }
 
-.btn-route-card i {
-    font-size: 12px;
-}
+        .btn-route-card i {
+            font-size: 12px;
+        }
 
-[data-theme="dark"] .btn-route-card {
-    background-color: #DAE799;
-    color: rgb(13, 60, 48);
-}
+        [data-theme="dark"] .btn-route-card {
+            background-color: #DAE799;
+            color: rgb(13, 60, 48);
+        }
 
-[data-theme="dark"] .btn-route-card:hover {
-    background-color: #e8f0b0;
-}
-
-
-
+        [data-theme="dark"] .btn-route-card:hover {
+            background-color: #e8f0b0;
+        }
     </style>
 </head>
 <body>
@@ -339,10 +336,14 @@
                             <span id="lang-text">EN</span>
                         </button>
                     </li>
-                    <li><a href="./HTML/login.html" class="btn-signin" data-i18n="nav_signin">Iniciar sesión</a></li>
+                    <!-- Contenedor con ID para cambio dinámico de Sesión / Perfil -->
+                    <li id="auth-container">
+                        <a href="./HTML/login.html" class="btn-signin" data-i18n="nav_signin">Iniciar sesión</a>
+                    </li>
                 </ul>
             </div>
         </header>
+
         <!-- Hero Title -->
         <section class="hero smooth-entry delay-2">
             <h1 data-i18n="hero_title">¿A dónde vamos?</h1>
@@ -429,27 +430,21 @@
                         <h3 data-i18n="card_food">Gastronomía Típica</h3>
                     </div>
 
-                    <!-- ================= 35 HOTELES REALES EN NICARAGUA ================= -->
-                    <div class="category-card hotel-card smooth-entry" 
-                        data-type="hotels" 
-                        data-region="granada" 
-                        data-lat="11.9298367" 
-                        data-lng="-85.9546564" 
-                        style="display: none;">
-                    <div class="card-image-container"><img src="./ASSETS/hotel_granada.jpg" alt="Hotel Plaza Colón" class="card-real-img"></div>
+                    <!-- ================= HOTELES REALES EN NICARAGUA ================= -->
+                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="granada" data-lat="11.9298367" data-lng="-85.9546564" style="display: none;">
+                        <div class="card-image-container"><img src="./ASSETS/hotel_granada.jpg" alt="Hotel Plaza Colón" class="card-real-img"></div>
                         <div class="card-content-area">
                             <h3>Hotel Plaza Colón</h3>
                             <p class="hotel-info-text">Granada, Centro Histórico</p>
-                        <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>5.0</span></div>
-                    <div class="hotel-bottom-row">
-                        <span class="hotel-price-tag"><strong>$110</strong> <span data-i18n="night_text">/ noche</span></span>
-                        <button class="btn-route-card" onclick="event.stopPropagation(); irAlMapa('Hotel Plaza Colón', 11.9298367, -85.9546564, './ASSETS/hotel_granada.jpg', 'Granada, Centro Histórico')">
-                            <i class="fas fa-route"></i> Cómo llegar
-                        </button>
+                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>5.0</span></div>
+                            <div class="hotel-bottom-row">
+                                <span class="hotel-price-tag"><strong>$110</strong> <span data-i18n="night_text">/ noche</span></span>
+                                <button class="btn-route-card" onclick="event.stopPropagation(); irAlMapa('Hotel Plaza Colón', 11.9298367, -85.9546564, './ASSETS/hotel_granada.jpg', 'Granada, Centro Histórico')">
+                                    <i class="fas fa-route"></i> Cómo llegar
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
 
                     <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="granada" style="display: none;">
                         <div class="card-image-container"><img src="./ASSETS/hotel_granada2.jpg" alt="Jicaro Island Lodge" class="card-real-img"></div>
@@ -521,26 +516,6 @@
                         </div>
                     </div>
 
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="sanjuan" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/hotel_maderas.jpg" alt="Maderas Village" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Maderas Village</h3>
-                            <p class="hotel-info-text">Playa Maderas, San Juan del Sur</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong>$120</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="sanjuan" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/hotel_dreamboat.jpg" alt="Dreamboat Hostel" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Dreamboat Hostel</h3>
-                            <p class="hotel-info-text">San Juan del Sur</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong>$35</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
                     <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="ometepe" style="display: none;">
                         <div class="card-image-container"><img src="./ASSETS/hotel_ometepe.jpg" alt="Totoco Eco-Lodge" class="card-real-img"></div>
                         <div class="card-content-area">
@@ -548,36 +523,6 @@
                             <p class="hotel-info-text">Balgüe, Isla de Ometepe</p>
                             <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
                             <span class="hotel-price-tag"><strong>$85</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="ometepe" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/hotel_ometepe2.webp" alt="Finca Magdalena" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Finca Magdalena Eco-Hostel</h3>
-                            <p class="hotel-info-text">Volcán Maderas, Ometepe</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong>$40</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="ometepe" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/hotel_villas_ometepe.jpg" alt="Villas Paraíso Ometepe" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Villas Paraíso Ometepe</h3>
-                            <p class="hotel-info-text">Playa Santo Domingo, Ometepe</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong>$90</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="ometepe" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/hotel_charco_verde.jpg" alt="Hotel Ojos del Agua" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Ojos del Agua</h3>
-                            <p class="hotel-info-text">Moyogalpa, Ometepe</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong>$95</strong> <span data-i18n="night_text">/ noche</span></span>
                         </div>
                     </div>
 
@@ -590,217 +535,6 @@
                             <span class="hotel-price-tag"><strong>$95</strong> <span data-i18n="night_text">/ noche</span></span>
                         </div>
                     </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="leon" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_leon2.jpg" alt="Hotel Mariposa" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel & Restaurant Mariposa</h3>
-                            <p class="hotel-info-text">León</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong>$75</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="leon" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_los_atardeceres.jpg" alt="Hotel Los Atardeceres" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Los Atardeceres</h3>
-                            <p class="hotel-info-text">Poneloya, León</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.5</span></div>
-                            <span class="hotel-price-tag"><strong>$65</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="leon" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_el_sUEÑO.avif" alt="Hotel El Sapo Dorado" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Posada San Juan</h3>
-                            <p class="hotel-info-text">León</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong>$85</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="matagalpa" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_matagalpa.jpg" alt="Selva Negra" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Selva Negra Eco Resort</h3>
-                            <p class="hotel-info-text">Matagalpa</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.9</span></div>
-                            <span class="hotel-price-tag"><strong>$115</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="matagalpa" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_kala.jpg" alt="Hotel Kailash" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Kailash</h3>
-                            <p class="hotel-info-text">Matagalpa</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong>$70</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="matagalpa" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_finca_ecologica.avif" alt="Hotel de Montaña Finca Esperanza Verde" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Finca Esperanza Verde</h3>
-                            <p class="hotel-info-text">Sébaco, Matagalpa</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong>$90</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="esteli" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_esteli.jpg" alt="Hotel Los Chilamates" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Los Chilamates</h3>
-                            <p class="hotel-info-text">Estelí</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.5</span></div>
-                            <span class="hotel-price-tag"><strong>$60</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="esteli" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_blem_esteli.jpg" alt="Hotel Hex Estelí" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Hex Estelí</h3>
-                            <p class="hotel-info-text">Estelí</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong>$85</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="caribe" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_corn.avif" alt="Paraiso Beach Hotel" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Paraiso Beach Hotel</h3>
-                            <p class="hotel-info-text">Big Corn Island</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.9</span></div>
-                            <span class="hotel-price-tag"><strong>$130</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="caribe" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_little_corn.webp" alt="Little Corn Island Beach Bungalows" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Little Corn Beach Bungalows</h3>
-                            <p class="hotel-info-text">Little Corn Island</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong>$140</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="managua" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_managua.jfif" alt="Crowne Plaza Managua" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Crowne Plaza Managua</h3>
-                            <p class="hotel-info-text">Managua</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong>$125</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="managua" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_managua2.jpg" alt="Hotel Seminole Plaza" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Seminole Plaza</h3>
-                            <p class="hotel-info-text">Managua</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong>$90</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="managua" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_hilton_managua.jpg" alt="Hilton Princess Managua" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hilton Princess Managua</h3>
-                            <p class="hotel-info-text">Managua</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong>$150</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="managua" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_intercontinental_mga.avif" alt="Real InterContinental Managua" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Real InterContinental Managua</h3>
-                            <p class="hotel-info-text">Metrocentro, Managua</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.9</span></div>
-                            <span class="hotel-price-tag"><strong>$170</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="masaya" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_masaya.jfif" alt="Hacienda San Pedro" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hacienda San Pedro</h3>
-                            <p class="hotel-info-text">Masaya</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.5</span></div>
-                            <span class="hotel-price-tag"><strong>$70</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="rio_san_juan" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_riosanjuan.jpg" alt="Hotel Sabana Alto" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Sabana Alto</h3>
-                            <p class="hotel-info-text">El Castillo, Río San Juan</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong>$55</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="madriz" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_somoto.jpg" alt="Cañón de Somoto Lodge" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Cañón de Somoto Lodge</h3>
-                            <p class="hotel-info-text">Somoto, Madriz</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong>$65</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="caribe" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_bluefields.jpg" alt="Hotel Raúl Spica" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Raúl Spica</h3>
-                            <p class="hotel-info-text">Bluefields, Caribe Sur</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.4</span></div>
-                            <span class="hotel-price-tag"><strong>$50</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="chinandega" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_chinandega.avif" alt="Hotel Los Acordes" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Los Acordes</h3>
-                            <p class="hotel-info-text">Chinandega Centro</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.5</span></div>
-                            <span class="hotel-price-tag"><strong>$55</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="boaco" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_boaco.jpg" alt="Hotel Elvia" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Hotel Elvia</h3>
-                            <p class="hotel-info-text">Boaco</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.3</span></div>
-                            <span class="hotel-price-tag"><strong>$45</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="hotels" data-region="sanjuan" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/hotel_aquamarina.jpg" alt="Hotel Aqua Nicaragua" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Aqua Nicaragua Oceanfront Resort</h3>
-                            <p class="hotel-info-text">Playa Gigante, Tola, Rivas</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.9</span></div>
-                            <span class="hotel-price-tag"><strong>$280</strong> <span data-i18n="night_text">/ noche</span></span>
-                        </div>
-                    </div>
-
 
                     <!-- ================= RESTAURANTES ================= -->
                     <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
@@ -834,16 +568,6 @@
                     </div>
 
                     <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_pur_parilla.jpg" alt="Pura Parrilla" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Pura Parrilla</h3>
-                            <p class="hotel-info-text">San Juan del Sur</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $22</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
                         <div class="card-image-container"><img src="./ASSETS/restaurant_el_timon.jpg" alt="El Timón" class="card-real-img"></div>
                         <div class="card-content-area">
                             <h3>Restaurante El Timón</h3>
@@ -852,247 +576,6 @@
                             <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $20</strong></span>
                         </div>
                     </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_meson_espana.jpg" alt="Mesón de España" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Mesón de España</h3>
-                            <p class="hotel-info-text">Granada, Comida Española</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $25</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_the_fusion.jfif" alt="The Fusion Factory" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>The Fusion Factory</h3>
-                            <p class="hotel-info-text">Granada</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $18</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_zapote.jpg" alt="El Zaguan" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Restaurante El Zaguán</h3>
-                            <p class="hotel-info-text">Granada, Carnes</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $22</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_pan_de_vida.jpg" alt="Pan de Vida" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Pan de Vida</h3>
-                            <p class="hotel-info-text">Ometepe, Repostería y Café</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $10</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_linda_b.jpg" alt="Comedor Linda Vista" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Comedor Linda Vista</h3>
-                            <p class="hotel-info-text">Ometepe, Comida Típica</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $12</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_zaian.webp" alt="Zapatón Restaurante" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Restaurante Bungalow Ometepe</h3>
-                            <p class="hotel-info-text">Ometepe</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.5</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $15</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_el_armenio.jpg" alt="El Sesteo" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Restaurante El Sesteo</h3>
-                            <p class="hotel-info-text">León, Frente a Catedral</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $14</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_el_viejito.jpg" alt="Vení Comerás" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Pizzería El Viejo</h3>
-                            <p class="hotel-info-text">León</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $12</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="./ASSETS/restaurant_son_gorilas.jpg" alt="Bar & Restaurant El Bodegón" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>El Bodegón de León</h3>
-                            <p class="hotel-info-text">León</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.5</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $16</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_meson_don_candido.jpg" alt="Mesón Don Cándido" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Mesón Don Cándido</h3>
-                            <p class="hotel-info-text">Managua</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $24</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_la_marsellesa.jfif" alt="La Marsellesa" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Restaurante La Marsellesa</h3>
-                            <p class="hotel-info-text">Managua, Comida Francesa e Internacional</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $28</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_chi_wan.jpg" alt="Chi-Wá" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Restaurante Chi-Wá</h3>
-                            <p class="hotel-info-text">Matagalpa, Café y Comida Fusión</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $14</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_bulevar.jpg" alt="Bulevar Café" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Bulevar Café</h3>
-                            <p class="hotel-info-text">Matagalpa</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $12</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_don_pancho.jfif" alt="Don Pancho" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Asados Don Pancho</h3>
-                            <p class="hotel-info-text">Estelí</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $15</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_cafe_aguila.jpg" alt="Café Águila" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Café Las Lomas</h3>
-                            <p class="hotel-info-text">Estelí</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.5</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $11</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/don_caly.jpg" alt="Comedor Don Caly" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Comedor Don Caly</h3>
-                            <p class="hotel-info-text">Big Corn Island, Comida Caribeña</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.9</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $18</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_margarita.jpg" alt="Margarita Beach" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Rica Beach Restaurant</h3>
-                            <p class="hotel-info-text">Big Corn Island</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $20</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_coyote.jpg" alt="El Coyote" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Restaurante El Coyote</h3>
-                            <p class="hotel-info-text">Masaya</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.6</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $13</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_monimbó.jfif" alt="Monimbó" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Comedor Monimbó</h3>
-                            <p class="hotel-info-text">Masaya, Tradicional</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $10</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_mirador_catarina.jfif" alt="Mirador de Catarina" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Restaurante Mirador de Catarina</h3>
-                            <p class="hotel-info-text">Catarina, Masaya</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $18</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_asados_chago.jpg" alt="Asados Chago" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Asados Chavita</h3>
-                            <p class="hotel-info-text">Managua</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $15</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_sushi_itto.jfif" alt="Sushi Itto" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Sushi Itto</h3>
-                            <p class="hotel-info-text">Managua, Comida Japonesa</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.8</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $25</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_la_creperie.jfif" alt="La Creperie" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>La Creperie</h3>
-                            <p class="hotel-info-text">San Juan del Sur</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.7</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $12</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="category-card hotel-card smooth-entry" data-type="restaurants" style="display: none;">
-                        <div class="card-image-container"><img src="/Go-NIC/ASSETS/restaurant_nindiri.jpg" alt="Restaurante Nindirí" class="card-real-img"></div>
-                        <div class="card-content-area">
-                            <h3>Restaurante Nindirí</h3>
-                            <p class="hotel-info-text">Managua</p>
-                            <div class="hotel-rating"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>4.5</span></div>
-                            <span class="hotel-price-tag"><strong data-i18n="avg_plate">Consumo aprox: $16</strong></span>
-                        </div>
-                    </div>
-
 
                     <!-- Botón para ver más de forma progresiva -->
                     <div class="load-more-container" id="load-more-container" style="display: none;">
@@ -1153,6 +636,28 @@
 
     <!-- Scripts de Interacción y Traducción -->
     <script>
+        // ================= DINÁMICA DE SESIÓN Y PERFIL =================
+        document.addEventListener("DOMContentLoaded", () => {
+            const authContainer = document.getElementById("auth-container");
+            const usuarioLogueado = localStorage.getItem("user") || localStorage.getItem("gonic-logged");
+
+            if (authContainer) {
+                if (usuarioLogueado && usuarioLogueado !== "null" && usuarioLogueado !== "undefined" && usuarioLogueado !== "") {
+                    authContainer.innerHTML = `
+                        <div>
+                            <a href="./HTML/perfil.html" style="background: #DAE799; color: #0D3C30; border: 1px solid #DAE799; padding: 8px 20px; border-radius: 20px; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
+                                Perfil
+                            </a>
+                        </div>
+                    `;
+                } else {
+                    authContainer.innerHTML = `
+                        <a href="./HTML/login.html" class="btn-signin" data-i18n="nav_signin">Iniciar sesión</a>
+                    `;
+                }
+            }
+        });
+
         const translations = {
             es: {
                 nav_discover: "Descubrir",
@@ -1457,7 +962,7 @@
                 const location = card.querySelector('.hotel-info-text') ? card.querySelector('.hotel-info-text').textContent : "Nicaragua";
                 const price = card.querySelector('.hotel-price-tag') ? card.querySelector('.hotel-price-tag').textContent : "$50";
                 const imgEl = card.querySelector('.card-real-img') || card.querySelector('.card-image-placeholder');
-                const imgSrc = imgEl.tagName === 'IMG' ? imgEl.getAttribute('src') : '/NicaGo/ASSETS/fondo-nicaragua.jpeg';
+                const imgSrc = imgEl.tagName === 'IMG' ? imgEl.getAttribute('src') : './ASSETS/fondo-nicaragua.jpeg';
 
                 modalTitle.textContent = title;
                 modalLocation.textContent = location;
@@ -1492,24 +997,19 @@
         });
 
         /* ========== FUNCIÓN PARA IR AL MAPA CON DESTINO ========== */
-function irAlMapa(nombre, lat, lng, imagen, ubicacion) {
-    // Guardar la info del destino en localStorage
-    var destino = {
-        nombre: nombre,
-        lat: lat,
-        lng: lng,
-        imagen: imagen,
-        ubicacion: ubicacion,
-        perfil: 'driving-car'
-    };
-    
-    localStorage.setItem('destinoRuta', JSON.stringify(destino));
-    
-    // Redirigir al mapa
-    window.location.href = './HTML/mapita.html';
-}
-
+        function irAlMapa(nombre, lat, lng, imagen, ubicacion) {
+            var destino = {
+                nombre: nombre,
+                lat: lat,
+                lng: lng,
+                imagen: imagen,
+                ubicacion: ubicacion,
+                perfil: 'driving-car'
+            };
+            
+            localStorage.setItem('destinoRuta', JSON.stringify(destino));
+            window.location.href = './HTML/mapita.html';
+        }
     </script>
-
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'gonic_db';
+$dbname = 'mysql';
 $username = 'root';
 $password = '';
 

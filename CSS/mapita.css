@@ -1,0 +1,876 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    background-image: url('../ASSETS/img/fondo1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    width: 100%;
+    height: 80px;
+
+    background-color: rgb(13, 60, 48);
+
+    display: flex;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 0 10px;
+}
+
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-left: 20px;
+    color: rgb(218, 231, 153);
+}
+
+.logo img {
+    max-height: 65px;
+    max-width: 160px;
+    object-fit: contain;
+}
+
+.logo h3 {
+    color: rgb(218, 231, 153);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.slogan {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    color: rgb(218, 231, 153);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* ========== NAV ACTIONS (Home + User) ========== */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+    margin-right: 30px;
+    flex-shrink: 0;
+}
+
+/* ========== BOTÓN HOME ========== */
+.home-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background-color: rgba(218, 231, 153, 0.1);
+    color: rgb(218, 231, 153);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.home-btn i {
+    font-size: 16px;
+}
+
+.home-btn:hover {
+    background-color: rgba(218, 231, 153, 0.2);
+    border-color: rgb(218, 231, 153);
+    transform: translateY(-2px);
+}
+
+.home-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========== MENÚ DE USUARIO ========== */
+.user-menu {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 8px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(218, 231, 153, 0.1);
+    border: 2px solid transparent;
+}
+
+.user-profile:hover {
+    background-color: rgba(218, 231, 153, 0.2);
+    border-color: rgb(218, 231, 153);
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgb(218, 231, 153);
+}
+
+.user-name {
+    color: rgb(218, 231, 153);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.dropdown-arrow {
+    color: rgb(218, 231, 153);
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.user-profile:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 240px;
+    background-color: rgb(13, 60, 48);
+    border-radius: 12px;
+    padding: 8px 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(218, 231, 153, 0.15);
+    z-index: 1001;
+    animation: slideDown 0.3s ease;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    color: rgb(218, 231, 153);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.dropdown-item i {
+    width: 20px;
+    font-size: 16px;
+    color: rgb(218, 231, 153);
+}
+
+.dropdown-item:hover {
+    background-color: rgba(218, 231, 153, 0.1);
+    transform: translateX(4px);
+}
+
+.dropdown-item.logout {
+    color: #ff6b6b;
+}
+
+.dropdown-item.logout i {
+    color: #ff6b6b;
+}
+
+.dropdown-item.logout:hover {
+    background-color: rgba(255, 107, 107, 0.1);
+}
+
+.dropdown-divider {
+    border: none;
+    border-top: 1px solid rgba(218, 231, 153, 0.15);
+    margin: 8px 0;
+}
+
+/* ========== MAIN WRAPPER ========== */
+.main-wrapper {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main {
+    width: 100%;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    min-height: 600px;
+    gap: 20px;
+    margin: 0 auto;
+}
+
+/* ========== MAPA ========== */
+.map-container {
+    flex: 0 0 70%;
+    height: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========== CONTENEDOR DE MARCAS ========== */
+.marked-container {
+    flex: 0 0 30%;
+    background-color: rgb(13, 60, 48);
+    padding: 20px;
+    color: rgb(218, 231, 153);
+    border-radius: 12px;
+    overflow-y: auto;
+    max-height: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.marked-container > h1 {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.marked-container hr {
+    border: 1px solid rgba(218, 231, 153, 0.3);
+    margin: 10px 0;
+}
+
+.marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 8px 0;
+}
+
+.input-group > h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: rgb(218, 231, 153);
+}
+
+.input-group > input,
+.input-group > textarea {
+    padding: 8px 12px;
+    outline: none;
+    font-size: 14px;
+    border: 2px solid rgba(218, 231, 153, 0.3);
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.input-group > input:focus,
+.input-group > textarea:focus {
+    border-color: rgb(218, 231, 153);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.input-group > textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.input-group > input::placeholder,
+.input-group > textarea::placeholder {
+    color: rgba(218, 231, 153, 0.5);
+}
+
+.input-group > input[readonly] {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(218, 231, 153, 0.7);
+    cursor: not-allowed;
+}
+
+.social-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.social-inputs input {
+    padding: 8px 12px;
+    outline: none;
+    font-size: 14px;
+    border: 2px solid rgba(218, 231, 153, 0.3);
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.social-inputs input:focus {
+    border-color: rgb(218, 231, 153);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.social-inputs input::placeholder {
+    color: rgba(218, 231, 153, 0.5);
+}
+
+.marker > button {
+    width: 100%;
+    padding: 12px;
+    font-size: 17px;
+    margin: 15px 0 10px 0;
+    cursor: pointer;
+    background-color: rgb(218, 231, 153);
+    color: rgb(13, 60, 48);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.marker > button:hover {
+    background-color: #e8f0b0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(218, 231, 153, 0.3);
+}
+
+.marker > button i {
+    margin-right: 8px;
+}
+
+.marked > h2 {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.marked .subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(218, 231, 153, 0.7);
+    margin: 5px 0 15px 0;
+}
+
+#markedLocations {
+    list-style: none;
+    padding: 0;
+}
+
+#markedLocations > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+#markedLocations > li > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#markedLocations > li > div:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+#markedLocations > li > div span {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#markedLocations > li > div button {
+    font-size: 13px;
+    color: rgb(218, 231, 153);
+    background-color: transparent;
+    border: 2px solid rgb(218, 231, 153);
+    border-radius: 6px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#markedLocations > li > div button:hover {
+    background-color: rgb(218, 231, 153);
+    color: rgb(13, 60, 48);
+}
+
+/* ========== POPUP ========== */
+.custom-popup {
+    min-width: 220px;
+    max-width: 300px;
+    padding: 5px;
+    background-color: rgb(13, 60, 48) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.popup-container .leaflet-popup-content-wrapper {
+    background-color: rgb(13, 60, 48) !important;
+    border-radius: 12px !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.popup-container .leaflet-popup-tip {
+    background-color: rgb(13, 60, 48) !important;
+}
+
+.popup-container .leaflet-popup-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 220px;
+    max-width: 300px;
+}
+
+.custom-popup .popup-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin: 0;
+}
+
+.custom-popup .popup-content {
+    padding: 15px;
+}
+
+.custom-popup .popup-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(218, 231, 153) !important;
+    margin: 0 0 6px 0;
+    padding: 0;
+}
+
+.custom-popup .popup-description {
+    font-size: 13px;
+    color: rgb(218, 231, 153) !important;
+    margin: 4px 0;
+    opacity: 0.9;
+}
+
+.custom-popup .popup-phone {
+    font-size: 14px;
+    color: rgb(218, 231, 153) !important;
+    margin: 8px 0 6px 0;
+}
+
+.custom-popup .popup-phone i {
+    margin-right: 8px;
+    color: rgb(218, 231, 153) !important;
+}
+
+.custom-popup .popup-social {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(218, 231, 153, 0.2);
+}
+
+.custom-popup .popup-social a {
+    color: rgb(218, 231, 153) !important;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.custom-popup .popup-social a:hover {
+    background-color: rgba(218, 231, 153, 0.1);
+    transform: translateX(5px);
+}
+
+.custom-popup .popup-social i {
+    width: 20px;
+    margin-right: 8px;
+    color: rgb(218, 231, 153) !important;
+}
+
+.popup-container .leaflet-popup-close-button {
+    color: rgb(218, 231, 153) !important;
+    font-size: 20px !important;
+    padding: 8px !important;
+}
+
+.popup-container .leaflet-popup-close-button:hover {
+    color: #ffffff !important;
+}
+
+/* ========== SCROLL PERSONALIZADO ========== */
+.marked-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.marked-container::-webkit-scrollbar-track {
+    background: rgba(218, 231, 153, 0.1);
+    border-radius: 3px;
+}
+
+.marked-container::-webkit-scrollbar-thumb {
+    background: rgb(218, 231, 153);
+    border-radius: 3px;
+}
+
+.marked-container::-webkit-scrollbar-thumb:hover {
+    background: #c4d48c;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    width: 100%;
+    background-color: rgb(13, 60, 48);
+    color: rgb(218, 231, 153);
+    border-top: 3px solid rgba(218, 231, 153, 0.2);
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 30px 20px 30px;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: rgb(218, 231, 153);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-section h3 i {
+    font-size: 18px;
+}
+
+.footer-section p {
+    font-size: 13px;
+    margin: 5px 0;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.footer-section a {
+    color: rgb(218, 231, 153);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 13px;
+}
+
+.footer-section a:hover {
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+.footer-section .footer-slogan {
+    font-style: italic;
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.footer-section .footer-version {
+    font-size: 11px;
+    opacity: 0.5;
+    margin-top: 5px;
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.footer-social a i {
+    width: 20px;
+    font-size: 18px;
+}
+
+.footer-social a:hover {
+    transform: translateX(8px);
+    color: #ffffff;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(218, 231, 153, 0.2);
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.footer-bottom .footer-credits {
+    font-size: 12px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .map-container {
+        flex: 0 0 500px;
+        height: 500px;
+    }
+    
+    .marked-container {
+        flex: 0 0 auto;
+        max-height: 500px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 20px 20px 15px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+        padding: 0 10px;
+    }
+    
+    .logo {
+        margin-left: 10px;
+        gap: 8px;
+    }
+    
+    .logo img {
+        max-height: 35px;
+        max-width: 80px;
+    }
+    
+    .logo h3 {
+        font-size: 16px;
+    }
+    
+    .slogan {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    
+    .nav-actions {
+        margin-right: 10px;
+        gap: 8px;
+    }
+    
+    .home-btn span {
+        display: none;
+    }
+    
+    .home-btn {
+        padding: 8px 12px;
+    }
+    
+    .user-name {
+        display: none;
+    }
+    
+    .user-profile {
+        padding: 4px 8px;
+    }
+    
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .dropdown-menu {
+        min-width: 200px;
+        right: -10px;
+    }
+    
+    .main {
+        padding: 10px;
+    }
+    
+    .map-container {
+        flex: 0 0 350px;
+        height: 350px;
+    }
+    
+    .marked-container {
+        max-height: 400px;
+        padding: 15px;
+    }
+    
+    .marked-container > h1 {
+        font-size: 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px 15px 10px 15px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px 15px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        height: 50px;
+        padding: 0 8px;
+    }
+    
+    .logo {
+        margin-left: 8px;
+        gap: 5px;
+    }
+    
+    .logo img {
+        max-height: 25px;
+        max-width: 60px;
+    }
+    
+    .logo h3 {
+        font-size: 12px;
+    }
+    
+    .slogan {
+        font-size: 10px;
+        margin-left: 8px;
+    }
+    
+    .nav-actions {
+        margin-right: 5px;
+        gap: 5px;
+    }
+    
+    .home-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    .home-btn i {
+        font-size: 14px;
+    }
+    
+    .home-btn span {
+        display: none;
+    }
+    
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .dropdown-menu {
+        min-width: 180px;
+        right: -5px;
+    }
+    
+    .dropdown-item {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+}

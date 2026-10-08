@@ -1,0 +1,1252 @@
+/* ==========================================
+   GO NIC - BRAND SYSTEM & STYLES (UNIFICADO)
+   ========================================== */
+
+/* Variables globales */
+:root, [data-theme="light"] {
+    --color-dark: #0D3C30;
+    --color-lime: #DAE799;
+    --color-sky: #91D5DD;
+    --color-teal: #0D6D69;
+    
+    --bg-body: #F4F8F7;
+    --bg-header: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-card-header: rgba(145, 213, 221, 0.3);
+    --bg-search: #FFFFFF;
+    
+    --text-primary: #0D3C30;
+    --text-secondary: #0D6D69;
+    --text-muted: #52796F;
+    --border-card: rgba(145, 213, 221, 0.4);
+    
+    --radius-sm: 12px;
+    --radius-md: 18px;
+    --radius-pill: 50px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tema Oscuro */
+[data-theme="dark"] {
+    --bg-body: #081613;
+    --bg-header: #0e241f;
+    --bg-card: #13322b;
+    --bg-card-header: #1c3831;
+    --bg-search: #13322b;
+    
+    --text-primary: #FFFFFF;
+    --text-secondary: #FFFFFF;
+    --text-muted: #94a3b8;
+    --color-teal: #42b2a8;
+    --border-card: rgba(145, 213, 221, 0.15);
+}
+
+/* Transiciones globales */
+body, header, .category-card, .search-box, .btn-signin, .nav-theme-btn, .search-tabs li, .card-image-placeholder, .search-box input {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, stroke 0.3s ease;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--bg-header);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo span {
+    color: var(--color-teal);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--color-teal);
+}
+
+/* Botón de cambio de tema */
+.nav-theme-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.nav-theme-btn:hover {
+    color: var(--color-teal);
+}
+
+/* Botón Iniciar Sesión */
+.btn-signin {
+    background-color: var(--color-dark);
+    color: var(--color-lime) !important;
+    padding: 0.65rem 1.6rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .btn-signin {
+    background-color: var(--color-lime);
+    color: var(--color-dark) !important;
+}
+
+.btn-signin:hover {
+    background-color: var(--color-teal);
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(13, 109, 105, 0.25);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 3.5rem 1rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -1px;
+}
+
+/* Barra de Búsqueda y Pestañas */
+.search-bar-container {
+    max-width: 820px; 
+    margin: 0 auto 3.5rem;
+    padding: 0 1rem;
+}
+
+.search-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;         
+    margin-bottom: 1.2rem;
+    list-style: none;
+    overflow-x: auto;     
+    scrollbar-width: none;
+}
+
+.search-tabs::-webkit-scrollbar {
+    display: none;        
+}
+
+.search-tabs li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius-pill);
+    color: var(--text-primary);
+    background-color: transparent;
+    transition: var(--transition);
+    white-space: nowrap;  
+}
+
+.search-tabs li svg {
+    stroke: var(--text-primary);
+}
+
+.search-tabs li.active {
+    background-color: var(--color-sky);
+    color: #0D3C30;
+}
+
+.search-tabs li.active svg {
+    stroke: #0D3C30;
+}
+
+.search-tabs li:hover:not(.active) {
+    background-color: rgba(145, 213, 221, 0.25);
+    color: var(--color-teal);
+}
+
+.search-box {
+    display: flex;
+    background: var(--bg-search);
+    border: 2px solid var(--color-sky);
+    border-radius: var(--radius-pill);
+    padding: 0.4rem 0.4rem 0.4rem 1.5rem;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.search-box svg {
+    stroke: var(--text-primary);
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.98rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: transparent;
+}
+
+.search-box input::placeholder {
+    color: var(--text-primary);
+    opacity: 0.7;
+}
+
+.btn-search {
+    background-color: var(--color-lime);
+    color: #0D3C30;
+    border: none;
+    padding: 0.85rem 2.2rem;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-search:hover {
+    background-color: #c8d880;
+    transform: scale(1.02);
+}
+
+/* ==========================================
+   DISEÑO UNIFICADO DE TARJETAS (CATEGORÍAS Y HOTELES)
+   ========================================== */
+
+.categories-section {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+.categories-container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+    color: var(--text-primary);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.8rem;
+}
+
+/* Tarjeta Base Unificada */
+.category-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-teal);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+/* Área superior de la imagen / SVG */
+.card-image-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: var(--bg-card-header);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-teal);
+}
+
+/* Textos e Información interna */
+.category-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    padding: 1.2rem 1.2rem 0.3rem 1.2rem;
+    margin: 0;
+}
+
+.hotel-info-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0 1.2rem 0.5rem 1.2rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.hotel-rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: #f59e0b;
+    padding: 0 1.2rem 0.5rem 1.2rem;
+}
+
+.hotel-rating span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-left: 4px;
+}
+
+.hotel-price-tag {
+    font-size: 0.92rem;
+    color: var(--color-teal);
+    font-weight: 500;
+    padding: 0 1.2rem 1.2rem 1.2rem;
+    margin-top: auto;
+}
+
+/* Banner Promocional */
+.promo-section {
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
+}
+
+.promo-card {
+    background-color: var(--color-lime);
+    border-radius: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .promo-card {
+    background-color: #0e2f27;
+}
+
+.promo-media {
+    background-color: var(--color-teal);
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-lime);
+}
+
+.promo-content {
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.promo-content h2 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.promo-content p {
+    font-size: 1rem;
+    color: var(--text-primary);
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-promo {
+    background-color: var(--color-dark);
+    color: #FFFFFF;
+    padding: 1rem 2.2rem;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-weight: 600;
+    width: fit-content;
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .btn-promo {
+    background-color: var(--color-lime);
+    color: var(--color-dark);
+}
+
+.btn-promo:hover {
+    background-color: var(--color-teal);
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+}
+
+/* Animaciones */
+.smooth-entry {
+    opacity: 0;
+    animation: smoothFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.40s; }
+.delay-6 { animation-delay: 0.48s; }
+
+@keyframes smoothFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(22px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .promo-card {
+        grid-template-columns: 1fr;
+    }
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+    .nav-links {
+        display: none;
+    }
+}
+/* ==========================================
+   pantalla de descubrir lugares
+   ========================================== */
+
+/* el texto chiquito de arriba */
+.hero-badge {
+    display: inline-block;
+    background-color: var(--color-sky);
+    color: #0D3C30;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.8rem;
+}
+
+.hero-subtitle {
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* la barra con los botones de categorias */
+.filter-container {
+    max-width: 1050px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1rem;
+}
+
+.filter-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+    padding: 0.55rem 1.3rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* cambiar color si se selecciona la categoria */
+.filter-btn.active, 
+.filter-btn:hover {
+    background-color: var(--color-teal);
+    color: #FFFFFF;
+    border-color: var(--color-teal);
+}
+
+/* caja general donde caen todas las tarjetas */
+.destinations-wrapper {
+    max-width: 1050px;
+    margin: 0 auto 5rem;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* estilo de las cards */
+.destination-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.destination-card:hover {
+    border-color: var(--color-teal);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+/* la parte de la izquierda donde va el icono */
+.card-sidebar {
+    background-color: var(--bg-card-header);
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 1px solid var(--border-card);
+}
+
+.sidebar-icon-box {
+    width: 68px;
+    height: 68px;
+    background-color: var(--bg-card);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-teal);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* el contenido fuerte de la derecha */
+.card-main {
+    padding: 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.destination-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.destination-location {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.destination-description {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+/* cuadritos de clima, acceso y costo */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    background-color: var(--bg-body);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item.full-width {
+    grid-column: span 3;
+}
+
+.info-label {
+    font-size: 0.73rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.info-val {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* la lista de cosas que hacer al final de la card */
+.highlights-section {
+    border-top: 1px dashed var(--border-card);
+    padding-top: 1.2rem;
+    margin-top: auto;
+}
+
+.highlights-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    margin-bottom: 0.6rem;
+}
+
+.highlights-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.highlights-list li {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+/* las vinetas bonitas de la lista */
+.highlights-list li::before {
+    content: "•";
+    color: var(--color-teal);
+    font-weight: bold;
+    font-size: 1.3rem;
+    position: absolute;
+    left: 0;
+    top: -3px;
+}
+
+/* arreglos para cel */
+@media (max-width: 820px) {
+    .destination-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-card);
+        padding: 1.8rem 1.5rem;
+    }
+
+    .card-main {
+        padding: 1.5rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-item.full-width {
+        grid-column: span 1;
+    }
+}
+
+/* Contenedor de la imagen real en las tarjetas de hoteles */
+.card-image-container {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+/* Ajuste de la imagen para que llene el espacio sin deformarse */
+.card-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de zoom sutil al pasar el cursor por encima de la tarjeta */
+.category-card:hover .card-real-img {
+    transform: scale(1.05);
+}
+
+/* Área de contenido inferior dentro de la tarjeta de hotel */
+.card-content-area {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hotel-info-text {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.hotel-rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #f59e0b; /* Color estrella */
+}
+
+.hotel-rating span {
+    margin-left: 5px;
+    color: inherit;
+}
+
+.hotel-price-tag {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+    background-color: #22252a !important;
+    color: #ffffff !important;
+    border-color: #3a3f47 !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: #9aa0a6 !important;
+}
+
+
+/* Contenedor general de la tarjeta para mantener orden */
+.hotel-card {
+  display: flex;
+  flex-direction: column;
+  background: #121212; /* Ajusta según tu paleta */
+  border-radius: 12px;
+  overflow: hidden;
+  /* ...otros estilos de tarjeta... */
+}
+
+.hotel-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Espaciado uniforme entre elementos */
+}
+
+/* Encabezado: Título y estrellas a la misma altura */
+.hotel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centra verticalmente el título y las estrellas */
+  width: 100%;
+}
+
+.hotel-title {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Estilo para las estrellas (similares en grosor/tamaño a los iconos del menú) */
+.hotel-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.hotel-stars .star {
+  font-size: 16px; /* Ajusta para que coincida con el tamaño visual de tus iconos */
+  color: #ffc107;  /* Color de estrella o el mismo tono de tus iconos si son SVG monocromáticos */
+}
+
+/* Sección de reseñas */
+.hotel-reviews {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #b0b0b0;
+}
+
+.hotel-reviews .score {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Sección de precio alineada */
+.hotel-footer {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.hotel-footer .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4db6ac; /* Color de acento similar al botón de hoteles */
+}
+
+.hotel-footer .night {
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+/* Ajuste contenedor interno de la tarjeta de hotel */
+.card-content-area {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Obliga a que todas las tarjetas ocupen el mismo espacio vertical */
+}
+
+/* Fila superior: Título y Calificación/Estrella a la misma altura */
+.hotel-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.hotel-header-row h3.hotel-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+}
+
+/* Estilo unificado para el icono vectorial de la estrella */
+.hotel-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #eab308; /* Tono dorado idéntico al solicitado */
+    flex-shrink: 0;
+}
+
+.hotel-rating svg {
+    width: 15px;
+    height: 15px;
+    fill: #eab308;
+    color: #eab308;
+}
+
+.hotel-rating span {
+    color: var(--text-primary);
+    margin-left: 2px;
+}
+
+/* Texto de reseña / ubicación */
+.hotel-info-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0 0 auto 0; /* Empuja los elementos inferiores hacia abajo si hay espacio */
+    padding: 0;
+}
+
+/* Fila inferior para el precio */
+.hotel-footer-row {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-card); /* Opcional: línea sutil separadora */
+}
+
+.hotel-price-tag {
+    font-size: 0.92rem;
+    color: var(--color-teal);
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================= CORRECCIÓN GLOBAL DE TEMAS (CLARO / OSCURO) ================= */
+    
+    /* Forzar tarjetas de hoteles según el atributo del documento */
+    [data-theme="dark"] .hotel-card {
+        background-color: rgb(13, 60, 48) !important;
+        color: #f8fafc !important;
+        border: 1px solid rgba(37, 12, 12, 0.068) !important;
+    }
+    [data-theme="dark"] .hotel-card .hotel-info-text {
+        color: #f1f1f1 !important;
+    }
+    [data-theme="dark"] .hotel-card h3 {
+        color: #f8fafc !important;
+    }
+    [data-theme="dark"] .hotel-card .hotel-price-tag {
+        color: #f8fafc !important;
+    }
+
+    [data-theme="light"] .hotel-card {
+        background-color: #ffffff !important;
+        color: #2152a1 !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+    [data-theme="light"] .hotel-card .hotel-info-text {
+        color: #0c1c31 !important;
+    }
+    [data-theme="light"] .hotel-card h3 {
+        color: #2c3b52 !important;
+    }
+    [data-theme="light"] .hotel-card .hotel-price-tag {
+        color: #1e293b !important;
+    }
+
+    /* Adaptación total del Modal de Detalles para Modo Oscuro y Claro */
+    [data-theme="dark"] .hotel-modal-content {
+        background-color: #1e293b !important;
+        color: #f8fafc !important;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    [data-theme="dark"] .modal-title {
+        color: #f8fafc !important;
+    }
+    [data-theme="dark"] .modal-location {
+        color: #94a3b8 !important;
+    }
+    [data-theme="dark"] .modal-description {
+        color: #cbd5e1 !important;
+    }
+    [data-theme="dark"] .modal-calendar-section {
+        border-top-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    [data-theme="dark"] .modal-calendar-section h4 {
+        color: #f8fafc !important;
+    }
+    [data-theme="dark"] .date-input-group label {
+        color: #94a3b8 !important;
+    }
+    [data-theme="dark"] .date-input-group input {
+        background: #1b253b !important;
+        color: #f8fafc !important;
+        border-color: #0063ee !important;
+    }
+
+    [data-theme="light"] .hotel-modal-content {
+        background-color: #ffffff !important;
+        color: #0754cf !important;
+        border: 1px solid #e2e8f0;
+    }
+/* ================= CORRECCIÓN DE LA BARRA DE BÚSQUEDA ================= */
+    .search-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: var(--card-bg, #ffffff);
+        border: 2px solid var(--border-color, #cbd5e1);
+        border-radius: 50px;
+        padding: 6px 8px 6px 18px;
+        max-width: 650px;
+        margin: 0 auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Forzar colores correctos de la barra según el tema */
+    [data-theme="dark"] .search-box {
+        background: #0f172a !important;
+        border-color: #334155 !important;
+    }
+
+    [data-theme="light"] .search-box {
+        background: #ffffff !important;
+        border-color: #cbd5e1 !important;
+    }
+
+    /* Estado de enfoque (cuando haces clic para escribir) */
+    .search-box:focus-within {
+        border-color: var(--primary-color, #0284c7) !important;
+        box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+    }
+
+    .search-box svg {
+        color: var(--text-muted, #64748b);
+        min-width: 20px;
+        margin-right: 12px;
+    }
+
+    .search-box input {
+        flex: 1;
+        border: none !important;
+        background: transparent !important;
+        outline: none !important;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        color: var(--text-color, #1e293b);
+        padding: 8px 0;
+        box-shadow: none !important;
+    }
+
+    [data-theme="dark"] .search-box input {
+        color: #f8fafc !important;
+    }
+
+    [data-theme="dark"] .search-box input::placeholder {
+        color: #94a3b8 !important;
+    }
+
+    .search-box .btn-search {
+        background: var(--primary-color, #DAE799);
+        color: rgb(13, 60, 48);
+        border: none;
+        padding: 10px 24px;
+        border-radius: 30px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
+
+    .search-box .btn-search:hover {
+        opacity: 0.9;
+    }
+
+    /* ==========================================
+   ADAPTACIONES RESPONSIVAS PARA MÓVILES
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* 1. Header y Navegación */
+    .nav-container {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 14px;
+        width: 100%;
+        padding-top: 5px;
+        border-top: 1px solid var(--border-card, #e2e8f0);
+    }
+
+    .nav-links a, 
+    .nav-theme-btn {
+        font-size: 0.85rem;
+    }
+
+    .btn-signin {
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    /* 2. Sección Hero */
+    .hero {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+    }
+
+    /* 3. Barra de Búsqueda */
+    .search-bar-container {
+        margin-bottom: 2rem;
+        padding: 0 12px;
+    }
+
+    .search-tabs {
+        justify-content: flex-start;
+        padding-bottom: 6px;
+    }
+
+    .search-tabs li {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0;
+        gap: 10px;
+    }
+
+    .search-box input {
+        width: 100%;
+        background: var(--bg-search, #ffffff) !important;
+        border: 2px solid var(--border-color, #cbd5e1) !important;
+        border-radius: 30px !important;
+        padding: 12px 16px 12px 42px !important;
+        font-size: 0.95rem;
+    }
+
+    [data-theme="dark"] .search-box input {
+        background: #0f172a !important;
+        border-color: #334155 !important;
+    }
+
+    .search-box svg {
+        position: absolute;
+        top: 15px;
+        left: 16px;
+        z-index: 2;
+    }
+
+    .search-box .btn-search {
+        width: 100%;
+        padding: 12px;
+        border-radius: 30px;
+    }
+
+    /* 4. Filtros de Hoteles y Cuadrículas */
+    .hotel-filter-bar {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+    }
+
+    .hotel-filter-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .categories-section {
+        padding: 0 12px;
+        margin-bottom: 3rem;
+    }
+
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* 5. Modal de Detalles Adaptado a Pantallas Pequeñas */
+    .hotel-modal-overlay {
+        padding: 10px;
+        align-items: flex-end; /* Se acomoda mejor en móviles estilo hoja inferior (bottom-sheet) */
+    }
+
+    .hotel-modal-content {
+        max-height: 88vh;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+    }
+
+    .modal-img {
+        height: 200px;
+    }
+
+    .modal-body {
+        padding: 20px;
+        gap: 14px;
+    }
+
+    .modal-title {
+        font-size: 1.35rem;
+    }
+
+    .modal-price {
+        font-size: 1.15rem;
+    }
+
+    .date-inputs-grid {
+        grid-template-columns: 1fr; /* Apila fecha de entrada y salida verticalmente */
+        gap: 10px;
+    }
+
+    /* 6. Banner Promocional */
+    .promo-section {
+        padding: 0 12px;
+    }
+
+    .promo-content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .promo-content h2 {
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,539 @@
+/* ==========================================
+   GO NIC - ESTILOS DE DESTINOS (DESCUBRIR)
+   Utiliza las variables definidas en styles.css
+   ========================================== */
+
+/* Subtítulo Hero & Badge */
+.hero-badge {
+    display: inline-block;
+    background-color: var(--color-sky);
+    color: #0D3C30;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.8rem;
+}
+
+.hero-subtitle {
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* Filtros de Categoría */
+.filter-container {
+    max-width: 1050px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1rem;
+}
+
+.filter-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+    padding: 0.55rem 1.3rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn.active, 
+.filter-btn:hover {
+    background-color: var(--color-teal);
+    color: #FFFFFF;
+    border-color: var(--color-teal);
+}
+
+/* Envoltorio principal de tarjetas */
+.destinations-wrapper {
+    max-width: 1050px;
+    margin: 0 auto 5rem;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Tarjeta Principal de Destino */
+.destination-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.destination-card:hover {
+    border-color: var(--color-teal);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar lateral de la tarjeta */
+.card-sidebar {
+    background-color: var(--bg-card-header);
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 1px solid var(--border-card);
+}
+
+.sidebar-icon-box {
+    width: 68px;
+    height: 68px;
+    background-color: var(--bg-card);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-teal);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Contenido Principal de la Tarjeta */
+.card-main {
+    padding: 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.destination-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.destination-location {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.destination-description {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+/* Cuadrícula de Información Técnica (Info-Grid) */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    background-color: var(--bg-body);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item.full-width {
+    grid-column: span 3;
+}
+
+.info-label {
+    font-size: 0.73rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.info-val {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Sección de actividades destacadas */
+.highlights-section {
+    border-top: 1px dashed var(--border-card);
+    padding-top: 1.2rem;
+    margin-top: auto;
+}
+
+.highlights-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    margin-bottom: 0.6rem;
+}
+
+.highlights-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.highlights-list li {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.highlights-list li::before {
+    content: "•";
+    color: var(--color-teal);
+    font-weight: bold;
+    font-size: 1.3rem;
+    position: absolute;
+    left: 0;
+    top: -3px;
+}
+
+/* Adaptabilidad Móvil */
+@media (max-width: 820px) {
+    .destination-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-card);
+        padding: 1.8rem 1.5rem;
+    }
+
+    .card-main {
+        padding: 1.5rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-item.full-width {
+        grid-column: span 1;
+    }
+}
+
+/* ==========================================
+   pantalla de descubrir lugares
+   ========================================== */
+
+/* el texto chiquito de arriba */
+.hero-badge {
+    display: inline-block;
+    background-color: var(--color-sky);
+    color: #0D3C30;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.8rem;
+}
+
+.hero-subtitle {
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* la barra con los botones de categorias */
+.filter-container {
+    max-width: 1050px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1rem;
+}
+
+.filter-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+    padding: 0.55rem 1.3rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* cambiar color si se selecciona la categoria */
+.filter-btn.active, 
+.filter-btn:hover {
+    background-color: var(--color-teal);
+    color: #FFFFFF;
+    border-color: var(--color-teal);
+}
+
+/* caja general donde caen todas las tarjetas */
+.destinations-wrapper {
+    max-width: 1050px;
+    margin: 0 auto 5rem;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* estilo de las cards */
+.destination-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.destination-card:hover {
+    border-color: var(--color-teal);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+/* la parte de la izquierda donde va el icono */
+.card-sidebar {
+    background-color: var(--bg-card-header);
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    border-right: 1px solid var(--border-card);
+}
+
+.sidebar-icon-box {
+    width: 68px;
+    height: 68px;
+    background-color: var(--bg-card);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-teal);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* el contenido fuerte de la derecha */
+.card-main {
+    padding: 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* imagen principal del destino */
+.destination-hero-img {
+    width: 100%;
+    height: 200px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+}
+
+.destination-hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover .destination-hero-img img {
+    transform: scale(1.03);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.destination-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.destination-location {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.destination-description {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+/* cuadritos de clima, acceso y costo */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    background-color: var(--bg-body);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 0.73rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.info-val {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* seccion de tarjetas de actividades con foto */
+.highlights-section {
+    border-top: 1px dashed var(--border-card);
+    padding-top: 1.2rem;
+    margin-top: auto;
+}
+
+.highlights-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    margin-bottom: 0.8rem;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.activity-card {
+    display: flex;
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    align-items: center;
+    gap: 0.8rem;
+    padding-right: 0.8rem;
+}
+
+.activity-card img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.activity-info h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.activity-info p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+}
+
+/* arreglos para cel */
+@media (max-width: 820px) {
+    .destination-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-card);
+        padding: 1.8rem 1.5rem;
+    }
+
+    .card-main {
+        padding: 1.5rem;
+    }
+
+    .destination-hero-img {
+        height: 160px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+}

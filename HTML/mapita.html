@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa interactivo - Promociona tu local</title>
+    
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    
+    <link rel="stylesheet" href="../CSS/Mapita_style.css">
+
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+
+        <!-- logo -->
+        <div class="logo">
+            <img src="../ASSETS/img/ISOTIPOGONIC.png" alt="GONIC">
+            <h3>GONIC</h3>
+        </div>
+
+        <!-- Eslogan -->
+        <div class="slogan">
+            <span>Tierra de lagos y volcanes</span>
+        </div>
+
+        <!-- Botón Home y Usuario -->
+        <div class="nav-actions">
+            <!-- Botón Home -->
+            <a href="../index.html" class="home-btn" title="Ir al inicio">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+
+            <!-- Botón de usuario -->
+            <div class="user-menu">
+                <div class="user-profile" onclick="toggleDropdown()">
+                    <img src="../ASSETS/img/ISOTIPOGONIC2.png" alt="Usuario" class="user-avatar" id="navbarUserAvatar">
+                    <span class="user-name" id="navbarUserName">Pepito</span>
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-download"></i> Descargar aplicación móvil
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-cog"></i> Configuraciones
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-question-circle"></i> Ayuda
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item logout">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- Contenido principal-->
+    <div class="main-wrapper">
+        
+        <div class="main">
+
+            <div class="container">
+
+                <div class="map-container">
+                    <div class="map" id="map"></div>
+                </div>
+
+                <div class="marked-container">
+
+                    <h1>Promociona tu local en el Mapa</h1>
+
+                    <hr>
+
+                    <div class="marker">
+
+                        <div class="input-group">
+                            <h3>Nombre del local:</h3>
+                            <input id="placeName" type="text" placeholder="Ej: Café Central">
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Tipo de lugar:</h3>
+                            <select id="placeType" class="place-type-select">
+                                <option value="">Selecciona el tipo...</option>
+                                <option value="Hotel">Hotel</option>
+                                <option value="Restaurante">Restaurante</option>
+                                <option value="Bar">Bar</option>
+                                <option value="Café">Café</option>
+                                <option value="Plaza">Plaza</option>
+                                <option value="Centro Comercial">Centro Comercial</option>
+                                <option value="Tienda">Tienda</option>
+                                <option value="Supermercado">Supermercado</option>
+                                <option value="Farmacia">Farmacia</option>
+                                <option value="Hospital">Hospital</option>
+                                <option value="Banco">Banco</option>
+                                <option value="Gasolinera">Gasolinera</option>
+                                <option value="Parque">Parque</option>
+                                <option value="Iglesia">Iglesia</option>
+                                <option value="Museo">Museo</option>
+                                <option value="Cine">Cine</option>
+                                <option value="Gimnasio">Gimnasio</option>
+                                <option value="Escuela">Escuela</option>
+                                <option value="Universidad">Universidad</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Descripción:</h3>
+                            <textarea id="placeDescription" placeholder="Breve descripción del local"></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Dirección:</h3>
+                            <input id="placeAddress" type="text" placeholder="Ej: Frente al parque central, Managua">
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Imagen del local:</h3>
+                            <div class="image-upload-wrapper">
+                                <input type="file" id="placeImage" accept="image/*" class="image-file-input" onchange="previewPlaceImage(event)">
+                                <label for="placeImage" class="image-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Subir imagen desde el dispositivo</span>
+                                </label>
+                            </div>
+                            <div id="imagePreviewContainer" class="image-preview-container" style="display: none;">
+                                <img id="imagePreview" class="image-preview" alt="Vista previa">
+                                <button type="button" class="image-remove-btn" onclick="removePlaceImage()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Teléfono:</h3>
+                            <input id="placePhone" type="text" placeholder="+505 1234-5678">
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Redes Sociales:</h3>
+                            <div class="social-inputs">
+                                <input id="placeFacebook" type="text" placeholder="Facebook: @ejemplo">
+                                <input id="placeInstagram" type="text" placeholder="Instagram: @ejemplo">
+                                <input id="placeTwitter" type="text" placeholder="Twitter: @ejemplo">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Latitud:</h3>
+                            <input id="latitude" type="text" readonly>
+                        </div>
+
+                        <div class="input-group">
+                            <h3>Longitud:</h3>
+                            <input id="longitude" type="text" readonly>
+                        </div>
+
+                        <button id="saveMarker" onclick="saveMarker()">
+                            <i class="fas fa-map-pin"></i> Promocionar Local
+                        </button>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="marked">
+
+                        <h2>Locales Promocionados</h2>
+                        <p class="subtitle">Haz clic en el marcador para ver la información</p>
+
+                        <ul id="markedLocations"></ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <img src="../ASSETS/img/ISOTIPOGONIC.png" alt="GONIC" style="height: 30px; width: auto; margin-right: 8px;">
+                        GONIC
+                    </h3>
+                    <p>Promocionando los mejores locales de Nicaragua</p>
+                    <p class="footer-slogan">"Tierra de lagos y volcanes"</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3><i class="fas fa-envelope"></i> Contáctanos</h3>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:GONIC@gmail.com">GONIC@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> +505 1234-5678</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3><i class="fas fa-share-alt"></i> Síguenos</h3>
+                    <div class="footer-social">
+                        <a href="#" onclick="window.open('https://facebook.com/GONIC', '_blank')" title="Facebook">
+                            <i class="fab fa-facebook"></i> GONIC
+                        </a>
+                        <a href="#" onclick="window.open('https://instagram.com/GONIC', '_blank')" title="Instagram">
+                            <i class="fab fa-instagram"></i> GONIC
+                        </a>
+                        <a href="#" onclick="window.open('https://twitter.com/GONIC', '_blank')" title="Twitter">
+                            <i class="fab fa-twitter"></i> GONIC
+                        </a>
+                        <a href="#" onclick="window.open('https://youtube.com/GONIC', '_blank')" title="YouTube">
+                            <i class="fab fa-youtube"></i> GONIC
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3><i class="fas fa-info-circle"></i> Acerca de</h3>
+                    <p>Plataforma interactiva para promocionar locales comerciales en el mapa de Nicaragua.</p>
+                    <p class="footer-version">Versión 1.0</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 GONIC - Todos los derechos reservados</p>
+                <p class="footer-credits">Desarrollado con <i class="fas fa-heart" style="color: rgb(218, 231, 153);"></i> para la comunidad</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ventana de confirmacion -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-box modal-confirm">
+            <div class="modal-header">
+                <i class="fas fa-question-circle"></i>
+                <h2>Confirmar modificación</h2>
+            </div>
+            <div class="modal-body">
+                <p>¿Desea modificar este punto?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal btn-yes" onclick="confirmModify()">
+                    <i class="fas fa-check"></i> Sí
+                </button>
+                <button class="btn-modal btn-no" onclick="closeConfirmModal()">
+                    <i class="fas fa-times"></i> No
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ventana de edicion -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal-box modal-edit">
+            <div class="modal-header">
+                <i class="fas fa-edit"></i>
+                <h2>Modificar Local</h2>
+                <button class="modal-close" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body modal-body-scroll">
+                <div class="edit-input-group">
+                    <label>Nombre del local:</label>
+                    <input id="editPlaceName" type="text">
+                </div>
+                <div class="edit-input-group">
+                    <label>Tipo de lugar:</label>
+                    <select id="editPlaceType" class="place-type-select">
+                        <option value="">Selecciona el tipo...</option>
+                        <option value="Hotel">Hotel</option>
+                        <option value="Restaurante">Restaurante</option>
+                        <option value="Bar">Bar</option>
+                        <option value="Café">Café</option>
+                        <option value="Plaza">Plaza</option>
+                        <option value="Centro Comercial">Centro Comercial</option>
+                        <option value="Tienda">Tienda</option>
+                        <option value="Supermercado">Supermercado</option>
+                        <option value="Farmacia">Farmacia</option>
+                        <option value="Hospital">Hospital</option>
+                        <option value="Banco">Banco</option>
+                        <option value="Gasolinera">Gasolinera</option>
+                        <option value="Parque">Parque</option>
+                        <option value="Iglesia">Iglesia</option>
+                        <option value="Museo">Museo</option>
+                        <option value="Cine">Cine</option>
+                        <option value="Gimnasio">Gimnasio</option>
+                        <option value="Escuela">Escuela</option>
+                        <option value="Universidad">Universidad</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div class="edit-input-group">
+                    <label>Descripción:</label>
+                    <textarea id="editPlaceDescription"></textarea>
+                </div>
+                <div class="edit-input-group">
+                    <label>Dirección:</label>
+                    <input id="editPlaceAddress" type="text">
+                </div>
+                <div class="edit-input-group">
+                    <label>Imagen del local:</label>
+                    <div class="image-upload-wrapper">
+                        <input type="file" id="editPlaceImage" accept="image/*" class="image-file-input" onchange="previewEditPlaceImage(event)">
+                        <label for="editPlaceImage" class="image-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Cambiar imagen</span>
+                        </label>
+                    </div>
+                    <div id="editImagePreviewContainer" class="image-preview-container" style="display: none;">
+                        <img id="editImagePreview" class="image-preview" alt="Vista previa">
+                        <button type="button" class="image-remove-btn" onclick="removeEditPlaceImage()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="edit-input-group">
+                    <label>Teléfono:</label>
+                    <input id="editPlacePhone" type="text">
+                </div>
+                <div class="edit-input-group">
+                    <label>Facebook:</label>
+                    <input id="editPlaceFacebook" type="text">
+                </div>
+                <div class="edit-input-group">
+                    <label>Instagram:</label>
+                    <input id="editPlaceInstagram" type="text">
+                </div>
+                <div class="edit-input-group">
+                    <label>Twitter:</label>
+                    <input id="editPlaceTwitter" type="text">
+                </div>
+                <div class="edit-input-group">
+                    <label>Latitud:</label>
+                    <input id="editLatitude" type="text" readonly>
+                </div>
+                <div class="edit-input-group">
+                    <label>Longitud:</label>
+                    <input id="editLongitude" type="text" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal btn-apply" onclick="applyChanges()">
+                    <i class="fas fa-check"></i> Aplicar
+                </button>
+                <button class="btn-modal btn-cancel" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ventana de eliminacion -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal-box modal-confirm">
+            <div class="modal-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Confirmar eliminación</h2>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar este punto?</p>
+                <p class="delete-warning">Esta acción no se puede deshacer</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal btn-yes" onclick="confirmDelete()">
+                    <i class="fas fa-check"></i> Sí
+                </button>
+                <button class="btn-modal btn-no" onclick="closeDeleteModal()">
+                    <i class="fas fa-times"></i> No
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE NUEVA RESEÑA -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-box modal-review">
+            <div class="modal-header">
+                <i class="fas fa-star"></i>
+                <h2 id="reviewModalTitle">Añadir reseña</h2>
+                <button class="modal-close" onclick="closeReviewModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body modal-body-scroll">
+                <div class="review-user-info">
+                    <img src="../ASSETS/img/ISOTIPOGONIC.png" alt="Usuario" class="review-user-avatar" id="reviewUserAvatar">
+                    <div class="review-user-details">
+                        <strong id="reviewUserName">Pepito</strong>
+                        <span id="reviewUserTime">Ahora</span>
+                    </div>
+                </div>
+                
+                <div class="edit-input-group">
+                    <label>Calificación:</label>
+                    <div class="review-star-selector" id="reviewStarSelector">
+                        <i class="fas fa-star" data-value="1"></i>
+                        <i class="fas fa-star" data-value="2"></i>
+                        <i class="fas fa-star" data-value="3"></i>
+                        <i class="fas fa-star" data-value="4"></i>
+                        <i class="fas fa-star" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="reviewRating" value="0">
+                </div>
+                
+                <div class="edit-input-group">
+                    <label>Tu reseña:</label>
+                    <textarea id="reviewText" placeholder="Cuéntanos tu experiencia en este lugar..." maxlength="500"></textarea>
+                </div>
+                
+                <div class="edit-input-group">
+                    <label>Añadir imagen (opcional):</label>
+                    <div class="image-upload-wrapper">
+                        <input type="file" id="reviewImage" accept="image/*" class="image-file-input" onchange="previewReviewImage(event)">
+                        <label for="reviewImage" class="image-upload-label">
+                            <i class="fas fa-camera"></i>
+                            <span>Subir imagen desde el dispositivo</span>
+                        </label>
+                    </div>
+                    <div id="reviewImagePreviewContainer" class="image-preview-container" style="display: none;">
+                        <img id="reviewImagePreview" class="image-preview" alt="Vista previa">
+                        <button type="button" class="image-remove-btn" onclick="removeReviewImage()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal btn-apply" onclick="publishReview()">
+                    <i class="fas fa-check"></i> Publicar
+                </button>
+                <button class="btn-modal btn-cancel" onclick="closeReviewModal()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL VISOR DE IMAGEN -->
+    <div class="modal-overlay image-viewer-overlay" id="imageViewerModal">
+        <div class="image-viewer-container">
+            <button class="image-viewer-close" onclick="closeImageViewer()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="imageViewerImg" class="image-viewer-img" alt="Imagen">
+        </div>
+    </div>
+
+    <!-- Leaflet.js JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Script JS -->
+    <script src="../Mapita_script.js"></script>
+
+    <!-- Script para el dropdown -->
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show');
+        }
+
+        // Cerrar el dropdown al hacer clic fuera
+        window.onclick = function(event) {
+            if (!event.target.closest('.user-menu')) {
+                var dropdowns = document.getElementsByClassName('dropdown-menu');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,394 @@
+.login-body {
+    margin: 0;
+    padding: 0;
+    background-color: #0A1E18;
+    color: #E8F1EE;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+
+.split-screen {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* --- PANEL IZQUIERDO --- */
+.panel-form {
+    flex: 1;
+    background-color: #0D231C;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 3rem;
+    max-width: 540px;
+    box-sizing: border-box;
+}
+
+.form-header {
+    text-align: center;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.link-highlight {
+    color: #91D5DD;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-highlight:hover {
+    text-decoration: underline;
+}
+
+.form-container {
+    max-width: 380px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.brand-badge {
+    width: 72px;
+    height: 72px;
+    background: rgba(13, 109, 105, 0.25);
+    border: 1px solid rgba(145, 213, 221, 0.25);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem auto;
+    padding: 6px;
+    overflow: hidden;
+}
+
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.form-container h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+.field-group, .form-actions {
+    text-align: left;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.field-group label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.asterisk {
+    color: #DAE799;
+}
+
+.field-group input {
+    background-color: #071612;
+    border: 1.5px solid rgba(145, 213, 221, 0.15);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    color: #FFFFFF;
+    font-size: 0.92rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.field-group input:focus {
+    border-color: #91D5DD;
+    box-shadow: 0 0 0 3px rgba(145, 213, 221, 0.1);
+}
+
+.input-password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-password-wrapper input {
+    width: 100%;
+    padding-right: 5rem;
+}
+
+.btn-toggle-show {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.btn-toggle-show:hover {
+    color: #91D5DD;
+}
+
+.form-actions {
+    margin-bottom: 1.8rem;
+}
+
+.link-subtle {
+    color: #91D5DD;
+    font-size: 0.82rem;
+    text-decoration: none;
+}
+
+.link-subtle:hover {
+    text-decoration: underline;
+}
+
+.btn-login-pill {
+    width: 100%;
+    background-color: #DAE799;
+    color: #0D3C30;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-login-pill:hover {
+    background-color: #e5f0ab;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(218, 231, 153, 0.2);
+}
+
+/* Footer centrado correctamente */
+.form-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+    margin-top: auto;
+    text-align: center;
+}
+
+.form-footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.form-footer a:hover {
+    color: #91D5DD;
+}
+
+/* --- PANEL DERECHO BANNER --- */
+.panel-banner {
+    flex: 1;
+    background: 
+        linear-gradient(135deg, rgba(13, 60, 48, 0.78) 0%, rgba(13, 109, 105, 0.85) 100%),
+        url('../ASSETS/fondo-nicaragua.jpeg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-content {
+    text-align: center;
+    z-index: 2;
+}
+
+.banner-logo {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -2px;
+}
+
+.banner-logo span {
+    color: #DAE799;
+}
+
+.banner-tagline {
+    font-size: 1.2rem;
+    color: #91D5DD;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .panel-banner {
+        display: none;
+    }
+    .panel-form {
+        max-width: 100%;
+    }
+}
+
+/* ==========================================
+   SISTEMA DE ANIMACIÓN SMOOTH (ENTRADA SUAVE)
+   ========================================== */
+
+.smooth-entry {
+    opacity: 0;
+    animation: smoothFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.smooth-banner {
+    opacity: 0;
+    animation: smoothBannerFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.40s; }
+.delay-6 { animation-delay: 0.48s; }
+.delay-7 { animation-delay: 0.56s; }
+
+@keyframes smoothFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(22px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes smoothBannerFade {
+    0% {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive / Móvil */
+@media (max-width: 900px) {
+    .panel-banner {
+        display: none;
+    }
+    .panel-form {
+        max-width: 100%;
+        width: 100%;
+        padding: 2rem 1.5rem;
+        min-height: 100vh;
+        box-sizing: border-box;
+        justify-content: space-between;
+    }
+
+    .form-container {
+        max-width: 100%;
+        margin: 1.5rem auto;
+    }
+
+    .form-container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-footer {
+        flex-wrap: wrap;
+        gap: 0.8rem 1.2rem;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-form {
+        padding: 1.5rem 1rem;
+    }
+    
+    .brand-badge {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+
+    .field-group input {
+        padding: 0.75rem 0.9rem;
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================
+   TRANSICIÓN LATERAL Y DESVANECIMIENTO
+   ========================================== */
+
+.form-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.auth-slider-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.auth-view {
+    width: 100%;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: translateX(40px);
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.auth-view.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    position: relative;
+}
+
+.auth-view.exit-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    pointer-events: none;
+    position: absolute;
+}
+
+.auth-view.exit-right {
+    opacity: 0;
+    transform: translateX(40px);
+    pointer-events: none;
+    position: absolute;
+}
+
+.switch-prompt {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+}

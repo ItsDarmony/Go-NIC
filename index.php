@@ -313,13 +313,13 @@
         <!-- Header Navigation -->
         <header class="smooth-entry delay-1">
             <div class="nav-container">
-                <a href="../Go-NIC-main/index.html" class="logo">GO<span>NIC</span></a>
+                <a href="../Go-NIC-main/index.php" class="logo">GO<span>NIC</span></a>
                 <ul class="nav-links">
-                    <li><a href="../Go-NIC-main/HTML/descubrir.html" class="active" data-i18n="nav_discover">Descubrir</a></li>
-                    <li><a href="index.html#hotels" data-i18n="nav_hotels">Hoteles</a></li>
-                    <li><a href="../Go-NIC-main/HTML/mapita.html" class="nav_mapita" data-i18n="nav_mapita">Mapa</a></li>
-                    <li><a href="../Go-NIC-main/HTML/foros.html" data-i18n="nav_foros">Foros</a></li>
-                    <li><a href="../Go-NIC-main/HTML/contacto.html" data-i18n="nav_contact">Contacto</a></li>
+                    <li><a href="HTML/descubrir.html" class="active" data-i18n="nav_discover">Descubrir</a></li>
+                    <li><a href="index.php#hotels" data-i18n="nav_hotels">Hoteles</a></li>
+                    <li><a href="HTML/mapita.html" class="nav_mapita" data-i18n="nav_mapita">Mapa</a></li>
+                    <li><a href="HTML/foros.html" data-i18n="nav_foros">Foros</a></li>
+                    <li><a href="HTML/contacto.html" data-i18n="nav_contact">Contacto</a></li>
                     <li>
                         <button type="button" id="theme-toggle" class="nav-theme-btn" aria-label="Cambiar tema">
                             <span id="theme-icon" style="display: flex; align-items: center;">

@@ -125,9 +125,14 @@
 
                             <div id="verifBox" style="display: none; margin-top: 20px; text-align: center;">
                                 <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">Verifica tu correo</h3>
-                                <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-bottom: 15px;">Ingresa el código de 6 dígitos enviado a tu correo.</p>
+                                <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-bottom: 15px;">Ingresa el código de 6 dígitos enviado a <strong id="verifEmail" style="color: #DAE799;"></strong>.</p>
                                 <input type="text" id="codigoInput" placeholder="123456" maxlength="6" style="padding: 10px; width: 100%; margin-bottom: 15px; border-radius: 8px; border: 1.5px solid rgba(145, 213, 221, 0.25); background: #071612; color: #fff; text-align: center; font-size: 1.2rem; letter-spacing: 2px; outline: none;">
                                 <button type="button" id="btnVerificar" class="btn-login-pill">Verificar Código</button>
+                                <p style="margin-top: 14px; font-size: 0.82rem;">
+                                    <a href="#" id="btnReenviar" class="link-highlight">Reenviar código</a>
+                                    &nbsp;·&nbsp;
+                                    <a href="#" id="btnCambiarCorreo" class="link-highlight">Usar otro correo</a>
+                                </p>
                             </div>
 
                         </div>
@@ -278,7 +283,7 @@
             const formData = new FormData(e.target);
 
             try {
-                const response = await fetch('../BACKEND/login_backend.php', {
+                const response = await fetch('/api/login_backend.php', {
                     method: 'POST',
                     body: formData
                 });
@@ -297,15 +302,38 @@
             }
         });
 
-        let correoPendiente = '';
+        const registerForm = document.getElementById('registerForm');
+        const verifBox = document.getElementById('verifBox');
 
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        // Correo pendiente de verificación (se conserva aunque se recargue la página).
+        let correoPendiente = localStorage.getItem('gonic-pending-email') || '';
+
+        function mostrarVerificacion(email) {
+            correoPendiente = email || correoPendiente;
+            document.getElementById('verifEmail').textContent = correoPendiente;
+
+            // Mostrar la vista de registro y sustituir el formulario por la caja de verificación.
+            loginView.classList.remove('active');
+            loginView.classList.add('exit-left');
+            registerView.classList.remove('next', 'exit-right');
+            registerView.classList.add('active');
+
+            registerForm.querySelectorAll('.field-group, button').forEach(el => el.style.display = 'none');
+            verifBox.style.display = 'block';
+        }
+
+        // Si había un registro pendiente sin verificar, retomarlo automáticamente al cargar.
+        if (correoPendiente) {
+            mostrarVerificacion(correoPendiente);
+        }
+
+        registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
-            correoPendiente = document.getElementById('reg-email').value;
+            const email = document.getElementById('reg-email').value;
 
             try {
-                const response = await fetch('../BACKEND/registro_backend.php', {
+                const response = await fetch('/api/registro_backend.php', {
                     method: 'POST',
                     body: formData
                 });
@@ -313,8 +341,8 @@
                 
                 alert(result.message);
                 if (result.status === 'success') {
-                    document.getElementById('registerForm').querySelectorAll('.field-group, button').forEach(el => el.style.display = 'none');
-                    document.getElementById('verifBox').style.display = 'block';
+                    localStorage.setItem('gonic-pending-email', email);
+                    mostrarVerificacion(email);
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -329,7 +357,7 @@
             formData.append('codigo', codigo);
 
             try {
-                const response = await fetch('../BACKEND/verificar_codigo.php', {
+                const response = await fetch('/api/verificar_codigo.php', {
                     method: 'POST',
                     body: formData
                 });
@@ -337,12 +365,42 @@
                 
                 alert(result.message);
                 if (result.status === 'success') {
+                    localStorage.removeItem('gonic-pending-email');
                     window.location.reload();
                 }
             } catch (error) {
                 console.error('Error:', error);
                 alert('Ocurrió un error al verificar el código.');
             }
+        });
+
+        // Reenviar el código de verificación a la cuenta pendiente.
+        document.getElementById('btnReenviar').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('email', correoPendiente);
+
+            try {
+                const response = await fetch('/api/reenviar_codigo.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ocurrió un error al reenviar el código.');
+            }
+        });
+
+        // Volver al formulario para usar otro correo.
+        document.getElementById('btnCambiarCorreo').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('gonic-pending-email');
+            correoPendiente = '';
+            document.getElementById('codigoInput').value = '';
+            registerForm.querySelectorAll('.field-group, button').forEach(el => el.style.display = '');
+            verifBox.style.display = 'none';
         });
     </script>
 </body>

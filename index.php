@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go Nic - Turismo en Nicaragua</title>
+    <link rel="icon" type="image/png" href="ASSETS/img/ISOTIPOGONIC2.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/styles.css">
     <style>
@@ -313,7 +314,7 @@
         <!-- Header Navigation -->
         <header class="smooth-entry delay-1">
             <div class="nav-container">
-                <a href="../Go-NIC-main/index.php" class="logo">GO<span>NIC</span></a>
+                <a href="index.php" class="logo">GO<span>NIC</span></a>
                 <ul class="nav-links">
                     <li><a href="HTML/descubrir.html" class="active" data-i18n="nav_discover">Descubrir</a></li>
                     <li><a href="index.php#hotels" data-i18n="nav_hotels">Hoteles</a></li>

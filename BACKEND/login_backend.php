@@ -32,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'status' => 'success', 
                 'message' => 'Bienvenido',
                 'nombre' => $user['nombre'] . ' ' . $user['apellido'],
-                'email' => $user['correo']
+                'email' => $user['correo'],
+                'tipo_usuario' => $user['tipo_usuario'] ?? 'turista'
             ]);
             exit;
         } else {
